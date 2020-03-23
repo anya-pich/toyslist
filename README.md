@@ -94,7 +94,9 @@ They should be able to take the following actions:
 
 ## Site Map
 
-https://www.gloomaps.com/wgvkaMos6a
+![image](gloomap_1e295fa1.png)
+
+See site map on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Wireframes
 
