@@ -4,12 +4,15 @@ Kidsbook is an online marketplace for parents to buy and sell children's toys lo
 
 ## Index
 
-* User Stories
-* Wireframes
-* Data Models / ERD
-* Milestones
-* Dependencies
-* Technologies
+- [User Stories] (#User Stories)
+- [Stretch Goals] (#Stretch Goals)
+- [Site Map] (#Site Map)
+- [Wireframes] (#Wireframes)
+- [Data Models] (#Data Models)
+- [Milestones] (#Milestones)
+- [Dependencies] (#Dependencies)
+- [Technologies] (#Technologies)
+- [License] (#License)
 
 ## User Stories
 
@@ -93,16 +96,19 @@ They should be able to take the following actions:
 
 https://www.gloomaps.com/wgvkaMos6a
 
+## Wireframes
 
-## Usage
+## Data Models
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```js
+let object;
 ```
+
+## Milestones
+
+## Dependencies
+
+## Technologies
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
