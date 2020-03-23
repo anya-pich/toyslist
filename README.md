@@ -89,6 +89,11 @@ They should be able to take the following actions:
 * seller ratings
 * links to social media profiles
 
+## Site Map
+
+https://www.gloomaps.com/wgvkaMos6a
+
+
 ## Usage
 
 ```python
