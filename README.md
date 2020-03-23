@@ -23,7 +23,7 @@ foobar.singularize('phenomena') # returns 'phenomenon'
 ```
 
 ## Sitemap
-
+<img src="file:///Users/jimmychen/Downloads/gloomap_0a0e4fc5.png">
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
