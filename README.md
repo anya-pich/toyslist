@@ -1,6 +1,6 @@
 # Kidsbook
 
-Kidsbook is an online marketplace for parents to buy and sell children's toys locally.
+Kidsbook is an online marketplace for parents to buy and sell pre-loved children's toys locally.
 
 ## Index
 
@@ -15,7 +15,7 @@ Kidsbook is an online marketplace for parents to buy and sell children's toys lo
 
 ## User Stories
 
-### Shopping for toys
+#### Shopping for toys
 
 Site visitors will be able to enter their location and view a list of toys currently available for sale nearby.
 They will be able to search inside this list of toys.
@@ -38,7 +38,7 @@ They will be able to take the following actions:
 * save item to list/cart
 * view item list/cart
 
-### Selling toys
+#### Selling toys
 
 Site patrons looking to pass on some pre-loved children's toys will be able to set up a profile where they'll be able to create and keep track of their postings as well as create profiles of their children.
 
@@ -49,8 +49,8 @@ User profile will contain:
 * phone
 * login & password
 
-option to view | add | edit | delete child profiles
-option to view | add | edit | delete toy postings
+* option to view | add | edit | delete child profiles
+* option to view | add | edit | delete toy postings
 
 Children's profile can contain:
 * name
@@ -77,13 +77,16 @@ Toy postings can contain:
 	* recent posts
 	* toy category
 	* has images
+	
 * browse listings by:
 	* category
 	* age
 	* gender
+	
 * online purchasing
 	* cart
 	* checkout
+	
 * timestamp posts
 * toy rating
 * condition (new, like new, good etc.)
