@@ -101,7 +101,7 @@ See user flow on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Site Map
 
-![image](Sitemap final.jpg)
+![image](Sitemap-final.jpg)
 
 ## Wireframes
 
