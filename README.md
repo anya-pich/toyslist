@@ -11,7 +11,7 @@ Kidsbook is an online marketplace for parents to buy and sell children's toys lo
 - [Data Models](#Data-Models)
 - [Milestones](#Milestones)
 - [Dependencies](#Dependencies)
-- [Technologies / Dependencies](#Technologies-/-Dependencies)
+- [Technologies](#Technologies)
 - [License](#License)
 
 ## User Stories
@@ -108,7 +108,7 @@ See diagram on [lucidchart] (https://www.lucidchart.com/invitations/accept/44d72
 
 ## Milestones
 
-## Technologies / Dependencies
+## Technologies
 
 MongoDB | Mongoose
 Express
