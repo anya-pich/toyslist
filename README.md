@@ -11,7 +11,7 @@ Kidsbook is an online marketplace for parents to buy and sell children's toys lo
 - [Data Models](#Data-Models)
 - [Milestones](#Milestones)
 - [Dependencies](#Dependencies)
-- [Technologies](#Technologies)
+- [Technologies / Dependencies](#Technologies-/-Dependencies)
 - [License](#License)
 
 ## User Stories
