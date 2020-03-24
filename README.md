@@ -17,13 +17,13 @@ Kidsbook is an online marketplace for parents to buy and sell pre-loved children
 
 #### Shopping for toys
 
-Site visitors will be able to enter their location and view a list of toys currently available for sale nearby.
-They will be able to search inside this list of toys.
+Site visitors will be able to enter their location and view a list of toys currently available for sale in their zipcode.
+They will be able to search inside this list of toys by keyword.
 
 In the search results they will be able to see for each list item:
 * an image
 * a title
-* location/distance
+* location
 * price
 
 When they click on a list item they will also see:
@@ -44,20 +44,12 @@ Site patrons looking to pass on some pre-loved children's toys will be able to s
 
 User profile will contain:
 * name
-* address/location
+* address
 * email
 * phone
-* login & password
+* username
 
-* option to view | add | edit | delete child profiles
 * option to view | add | edit | delete toy postings
-
-Children's profile can contain:
-* name
-* age
-* gender
-* description
-* images
 
 Toy postings can contain:
 * title
@@ -135,7 +127,9 @@ MongoDB | Mongoose | Express | Bootstrap | Node.js
 * borrow/rent/swap items
 * map view
 * seller ratings
+* add child profiles to main profile with child name, age, gender, description, images
 * links to social media profiles
+* password authentication
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
