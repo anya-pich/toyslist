@@ -1,0 +1,25 @@
+{
+  "name": "toyslist",
+  "version": "1.0.0",
+  "description": "Kidsbook is an online marketplace for parents to buy and sell pre-loved children's toys locally.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anya-pich/toyslist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anya-pich/toyslist/issues"
+  },
+  "homepage": "https://github.com/anya-pich/toyslist#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6"
+  }
+}
