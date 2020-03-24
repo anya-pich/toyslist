@@ -15,81 +15,83 @@ Kidsbook is an online marketplace for parents to buy and sell children's toys lo
 
 ## User Stories
 
-Stretch goals are included in parentheses.
+### Shopping for toys
 
-### Buyer side
+Site visitors will be able to enter their location and view a list of toys currently available for sale nearby.
+They will be able to search inside this list of toys.
 
-Site visitors should be able to enter their location and view a list of toys currently available for sale nearby.
-They should be able to sort and filter and search inside this list of toys by:
-* distance
-* price
-* age
-* gender
-* (recent posts)
-* (toy category)
-* (has images)
+In the search results they will be able to see for each list item:
+- an image
+- a title
+- location/distance
+- price
 
-(Or browse:)
-* by category
-* by age
-* by gender
+When they click on a list item they will also see:
+- more images
+- item description
+- age tag
+- gender tag if appropriate
 
-In the list they should be able to see for each toy:
-* an image
-* a title
-* location/distance
-* price
-* (date posted)
+They will be able to take the following actions:
+- contact seller
+- navigate to seller profile in a new tab
+- save item to list/cart
+- view item list/cart
 
-When they click on a toy they should see for this toy ALL THE ABOVE plus:
-* more images
-* description
-* (rating)
-* age tag
-* gender tag if appropriate
-* (toy category)
+### Selling toys
 
-They should be able to take the following actions:
-* contact seller
-* save to list/cart
-* view list/cart
+Site patrons looking to pass on some pre-loved children's toys will be able to set up a profile where they'll be able to create and keep track of their postings as well as create profiles of their children.
 
-### Vendor side
+User profile will contain:
+- name
+- address/location
+- email
+- phone
+- login & password
 
-* Profile details
-	* address/location
-	* email
-	* phone
-	* login & password
-* Child profile(s)
-	* age
-	* images
-	* name
-	* gender
-	* description
-	* view/add/edit/delete child profiles
-* Toys
-	* images
-	* title
-	* description
-	* price
-	* (rating how much parent/baby liked it)
-	* (categories for browse)
-	* age tag
-	* gender tag if relevant
-	* view/add/edit/delete toy profiles
+- option to view | add | edit | delete child profiles
+- option to view | add | edit | delete toy postings
+
+Children's profile can contain:
+- name
+- age
+- gender
+- description
+- images
+
+Toy postings can contain:
+- title
+- description
+- images
+- price
+- age tag
+- gender tag if relevant
 		
 ## Stretch goals
 
-* online purchasing
-	* cart
-	* checkout
-* borrow/rent items
-* multiple child profiles
-* upload videos of kids playing with toy(s)
-* map view
-* seller ratings
-* links to social media profiles
+- sort and filter search results by: 
+	- distance
+	- price
+	- age
+	- gender
+	- recent posts
+	- toy category
+	- has images
+- browse listings by:
+	- category
+	- age
+	- gender
+- online purchasing
+	- cart
+	- checkout
+- timestamp posts
+- toy rating
+- condition (new, like new, good etc.)
+- upload videos of kids playing with toy(s)
+- borrow/rent/swap items
+- map view
+- seller ratings
+- links to social media profiles
 
 ## Site Map
 
