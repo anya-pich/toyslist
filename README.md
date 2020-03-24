@@ -140,5 +140,5 @@ MongoDB | Mongoose | Express | Bootstrap | Node.js
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-===
+---
 [back to the top](#Kidsbook)
