@@ -99,20 +99,36 @@ See site map on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Wireframes
 
+![image](wf1.png)
+![image](wf2.png)
+![image](wf3.png)
+![image](wf4.png)
+![image](wf5.png)
+![image](wf6.png)
+![image](wf7.png)
+![image](wf8.png)
+![image](wf9.png)
+![image](wf10.png)
+![image](wf11.png)
+![image](wf12.png)
+![image](wf13.png)
+![image](wf14.png)
+![image](wf15.png)
+![image](wf16.png)
+![image](wf17.png)
+![image](wf18.png)
+
 ## Data Models
 
 ![image](database_diagram.svg)
 
-See diagram on [lucidchart] (https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
+See diagram on [lucidchart](https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
 
 ## Milestones
 
 ## Technologies
 
-MongoDB | Mongoose
-Express
-Bootstrap
-Node.js
+MongoDB | Mongoose | Express | Bootstrap | Node.js
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
