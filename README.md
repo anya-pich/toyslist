@@ -102,15 +102,18 @@ See site map on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Data Models
 
-```js
-let object;
-```
+![image](Basic Database ER Diagram (Crow's Foot).svg)
+
+See diagram on [lucidchart] (https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
 
 ## Milestones
 
-## Dependencies
+## Technologies / Dependencies
 
-## Technologies
+MongoDB | Mongoose
+Express
+Bootstrap
+Node.js
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
