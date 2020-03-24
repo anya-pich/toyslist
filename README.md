@@ -49,8 +49,8 @@ User profile will contain:
 * phone
 * login & password
 
-* option to view | add | edit | delete child profiles
-* option to view | add | edit | delete toy postings
+option to view | add | edit | delete child profiles
+option to view | add | edit | delete toy postings
 
 Children's profile can contain:
 * name
@@ -101,9 +101,7 @@ See user flow on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Site Map
 
-![image](gloomap_1e295fa1.png)
-
-See site map on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
+![image](Sitemap final.jpg)
 
 ## Wireframes
 
