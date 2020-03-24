@@ -101,7 +101,7 @@ See site map on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Data Models
 
-![image](Basic Database ER Diagram (Crow's Foot).svg)
+![image](database_diagram.svg)
 
 See diagram on [lucidchart] (https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
 
