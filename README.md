@@ -5,12 +5,12 @@ Kidsbook is an online marketplace for parents to buy and sell pre-loved children
 ## Index
 
 * [User Stories](#User-Stories)
-* [Stretch Goals](#Stretch-Goals)
+* [User Flow](#User-Flow)
 * [Site Map](#Site-Map)
 * [Wireframes](#Wireframes)
 * [Data Models](#Data-Models)
-* [Milestones](#Milestones)
 * [Technologies](#Technologies)
+* [Stretch Goals](#Stretch-Goals)
 * [License](#License)
 
 ## User Stories
@@ -66,35 +66,6 @@ Toy postings can contain:
 * price
 * age tag
 * gender tag if relevant
-		
-## Stretch goals
-
-* sort and filter search results by: 
-	* distance
-	* price
-	* age
-	* gender
-	* recent posts
-	* toy category
-	* has images
-	
-* browse listings by:
-	* category
-	* age
-	* gender
-	
-* online purchasing
-	* cart
-	* checkout
-	
-* timestamp posts
-* toy rating
-* condition (new, like new, good etc.)
-* upload videos of kids playing with toy(s)
-* borrow/rent/swap items
-* map view
-* seller ratings
-* links to social media profiles
 
 ## User Flow
 
@@ -133,11 +104,38 @@ See user flow on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 See diagram on [lucidchart](https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
 
-## Milestones
-
 ## Technologies
 
 MongoDB | Mongoose | Express | Bootstrap | Node.js
+
+## Stretch goals
+
+* sort and filter search results by: 
+	* distance
+	* price
+	* age
+	* gender
+	* recent posts
+	* toy category
+	* has images
+	
+* browse listings by:
+	* category
+	* age
+	* gender
+	
+* online purchasing
+	* cart
+	* checkout
+	
+* timestamp posts
+* toy rating
+* condition (new, like new, good etc.)
+* upload videos of kids playing with toy(s)
+* borrow/rent/swap items
+* map view
+* seller ratings
+* links to social media profiles
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
