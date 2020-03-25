@@ -5,7 +5,7 @@ const ToySchema = new mongoose.Schema({
     title: String,
     description: String,
     images: Array,
-    price: Number,
+    price: String,
     ageTag: String,
     genderTag: String
 }, {timestamps: true});
