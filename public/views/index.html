@@ -11,31 +11,59 @@
  	<link rel="stylesheet" href="/styles/main.css">
 
   	<!-- Main JS -->
-  	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
   	<script defer src="/scripts/main.js"></script>
-  	
+
 	<title>Toyslist</title>
 </head>
-
 <body>
-	<div class="navbar">
-	    <ul class="navbar ml-auto">
-	        <li>
-	          <a class="nav-signup" href="signup_login/signup.html">Sign up</a>
-	        </li>
-	        <li>
-	          <a class="nav-login" href="signup_login/login.html">Login</a>
-	        </li>
-		</ul>
-	</div>
-	<form class="form-inline md-form mr-auto mb-4">
-  		<input class="form-control mr-sm-2" type="text" placeholder="Enter Your Zipcode" value="">
-  		<button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Go!</button>
-	</form>
+	<header>
+	    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3 mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="/">TOYSLIST</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+          	<form class="form-inline md-form ml-auto mb-1">
+		  		<input class="form-control mr-sm-2" type="text" placeholder="Search" value="">
+		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
+
+		  		<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="">
+<!-- 		  		<button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Enter Zipcode</button> -->
+
+	            <li class="nav-item">
+	              <a class="nav-link" href="/signup_login/signup">Sign up</a>
+	            </li>
+
+	            <li class="nav-item">
+	              <a class="nav-link" href="/signup_login/login">Login</a>
+	            </li>
+        	</form>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="mb-5">
+    <!-- Cities Section -->
+    <section class="container">
+      <div id="users" class="row"></div>
+    </section>
+  </main>
+
 
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+
+  <!-- Footer -->
+<!--   <footer class="bg-dark text-center text-light pt-4 pb-4">
+    <p class="mb-0">A*J website.Inc.</p>
+  </footer> -->
+
 </html>
