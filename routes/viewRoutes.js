@@ -25,4 +25,7 @@ router.get('/signup', (req, res) => {
 
 });
 
+// serve whatever.file at url/what/ever
+// for example
+
 module.exports = router;
