@@ -1,6 +1,6 @@
 const db = require('./models');
 
-const seedPeople = [
+const users = [
     {
         name: 'Bob',
         email: 'bob@gmail.com',
@@ -147,7 +147,7 @@ db.Profile.deleteMany({}, (err, result) => {
 
     console.log(`Deleted ${result.deletedCount} profiles.`);
 
-    db.Profile.create(seedPeople, (err, newProfiles) => {
+    db.Profile.create(users, (err, newProfiles) => {
 
         if (err) {
             console.log(err);
@@ -164,19 +164,19 @@ db.Profile.deleteMany({}, (err, result) => {
 
 
    
-      City.findById(req.params.cityId, (err, foundCity) => {
-        if (err) {
-          return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
-        }
-        // Add Post To City
-        foundCity.posts.push(newPost);
-        // Save Modified City
-        foundCity.save((err, savedCity) => {
-          if (err) {
-            return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
-          }
-          res.json(newPost);
-        });
-      });
-    });
-  });
+//       City.findById(req.params.cityId, (err, foundCity) => {
+//         if (err) {
+//           return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+//         }
+//         // Add Post To City
+//         foundCity.posts.push(newPost);
+//         // Save Modified City
+//         foundCity.save((err, savedCity) => {
+//           if (err) {
+//             return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+//           }
+//           res.json(newPost);
+//         });
+//       });
+//     });
+//   });
