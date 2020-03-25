@@ -29,9 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false})); // maybe
 
 app.use('/', routes.views);
 
-app.get('/test', (req, res) => {
-    res.send('right back at you');
-});
+// app.get('/test', (req, res) => {
+//     res.send('right back at you');
+// });
 
 // -------------------------------------- API ROUTES ---------------------------------------- //
 
