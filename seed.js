@@ -161,3 +161,5 @@ db.Profile.deleteMany({}, (err, result) => {
 
     });
 });
+
+// run node seed in terminal before connecting the server to populate database
