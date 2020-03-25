@@ -16,18 +16,22 @@
 <body>
 	<div class="navbar">
 	    <ul class="navbar ml-auto">
-	        <li>
-	          <a class="nav-link" href="/signup.html">Sign up</a>
+  			<li id="R">
+	          <a class="nav-link" href="/">Home</a>
 	        </li>
-	        <li>
-	          <a class="nav-link" href="/login.html">Login</a>
-	        </li>
+	      	<form class="form-inline md-form mr-auto mb-4">
+	  			<input class="form-control mr-sm-2" type="text" placeholder="Search" value="">
+	  			<button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Search</button>
+		        <li id="nav-signup">
+		          <a class="nav-link" href="/signup.html">Sign up</a>
+		        </li>
+		        <li id="nav-login">
+		          <a class="nav-link" href="/login.html">Login</a>
+		        </li>	
+			</form>
 		</ul>
 	</div>
-	<form class="form-inline md-form mr-auto mb-4">
-  		<input class="form-control mr-sm-2" type="text" placeholder="Enter Your Zipcode" value="">
-  		<button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Go!</button>
-	</form>
+
 
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
