@@ -61,38 +61,38 @@ Toy postings can contain:
 
 ## User Flow
 
-![image](gloomap_1e295fa1.png)
+![image](public/img/readme/gloomap_1e295fa1.png)
 
 See user flow on [gloomaps](https://www.gloomaps.com/wgvkaMos6a)
 
 ## Site Map
 
-![image](Sitemap_final.jpg)
+![image](public/img/readme/Sitemap_final.jpg)
 
 ## Wireframes
 
-![image](wf1.png)
-![image](wf2.png)
-![image](wf3.png)
-![image](wf4.png)
-![image](wf5.png)
-![image](wf6.png)
-![image](wf7.png)
-![image](wf8.png)
-![image](wf9.png)
-![image](wf10.png)
-![image](wf11.png)
-![image](wf12.png)
-![image](wf13.png)
-![image](wf14.png)
-![image](wf15.png)
-![image](wf16.png)
-![image](wf17.png)
-![image](wf18.png)
+![image](public/img/readme/wf1.png)
+![image](public/img/readme/wf2.png)
+![image](public/img/readme/wf3.png)
+![image](public/img/readme/wf4.png)
+![image](public/img/readme/wf5.png)
+![image](public/img/readme/wf6.png)
+![image](public/img/readme/wf7.png)
+![image](public/img/readme/wf8.png)
+![image](public/img/readme/wf9.png)
+![image](public/img/readme/wf10.png)
+![image](public/img/readme/wf11.png)
+![image](public/img/readme/wf12.png)
+![image](public/img/readme/wf13.png)
+![image](public/img/readme/wf14.png)
+![image](public/img/readme/wf15.png)
+![image](public/img/readme/wf16.png)
+![image](public/img/readme/wf17.png)
+![image](public/img/readme/wf18.png)
 
 ## Data Models
 
-![image](mvp_db_diagram.svg)
+![image](public/img/readme/mvp_db_diagram.svg)
 
 See diagram on [lucidchart](https://www.lucidchart.com/invitations/accept/44d72878-61fc-4aa8-b688-39cc548fcfd6)
 
