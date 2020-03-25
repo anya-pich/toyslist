@@ -1,6 +1,6 @@
 const db = require('./models');
 
-const fakePeople = [
+const users = [
     {
         name: 'Bob',
         email: 'bob@gmail.com',
@@ -149,7 +149,7 @@ db.Profile.deleteMany({}, (err, result) => {
 
     console.log(`Deleted ${result.deletedCount} profiles.`);
 
-    db.Profile.create(fakePeople, (err, newProfiles) => {
+    db.Profile.create(users, (err, newProfiles) => {
 
         if (err) {
             console.log(err);
