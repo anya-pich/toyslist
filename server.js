@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false})); // maybe
 
 // -------------------------------------- HTML ROUTES --------------------------------------- //
 
-// app.use('/', routes.views);
+app.use('/', routes.views);
 
 app.get('/test', (req, res) => {
     res.send('right back at you');
@@ -35,7 +35,7 @@ app.get('/test', (req, res) => {
 
 // -------------------------------------- API ROUTES ---------------------------------------- //
 
-// app.use('/api/v1/', routes.api);
+app.use('/api/v1/', routes.api);
 
 // -------------------------------------- START SERVER -------------------------------------- //
 

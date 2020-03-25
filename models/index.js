@@ -12,6 +12,6 @@ mongoose.connect(DB_URI, {
     .catch((err) => console.log(`MongoDB error: ${err}`));
 
 module.exports = {
-    Profile = require('./Profile'),
-    Toy = require('./Toy')
+    Profile: require('./Profile'),
+    Toy: require('./Toy')
 };
