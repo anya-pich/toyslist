@@ -38,7 +38,7 @@ const users = [
     }
 ];
 
-const seedToys = [
+const toys = [
     {
         title: 'social media kit',
         description: 'Quis velit ex exercitation do veniam nulla aliqua magna deserunt nostrud et in duis. Enim ea eiusmod et qui ullamco laborum aute ipsum. Sit veniam voluptate tempor nostrud nulla voluptate dolore incididunt et.',
@@ -155,6 +155,27 @@ db.Profile.deleteMany({}, (err, result) => {
         }
 
         console.log(`Made ${newProfiles.length} profiles.`);
+        process.exit();
+
+    });
+});
+
+db.Toy.deleteMany({}, (err, result) => {
+    if (err) {
+        console.log(err);
+        process.exit();
+    }
+
+    console.log(`Deleted ${result.deletedCount} toys.`);
+
+    db.Toy.create(toys, (err, newToys) => {
+
+        if (err) {
+            console.log(err);
+            process.exit();
+        }
+
+        console.log(`Made ${newToys.length} toys.`);
         process.exit();
 
     });
