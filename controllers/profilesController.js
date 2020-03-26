@@ -84,6 +84,22 @@ const remove = (req, res) => {
         });
 }; // works
 
+
+// delete user profile at url/api/v1/profile/id
+
+const remove = (req, res) => {
+    db.Profile.deleteOne(
+        {_id: req.params.id},
+        (err, deletedProfile) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+        res.json(deletedProfile);
+        });
+}; 
+
 module.exports = {
     index,
     create,

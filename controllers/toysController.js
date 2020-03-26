@@ -55,7 +55,9 @@ const show = (req, res) => {
             .status(400)
             .json({status: 400, error: 'Something went wrong, please try again.'});
         }
+
         const foundToy = foundProfile.toys.id(req.params.toy_id);
+
         if (!foundToy) {
             res.status(400).json({status: 400, error: 'Could not find item'});
         }
@@ -140,6 +142,82 @@ const remove = (req, res) => {
         });
     });
 }; // works
+
+
+
+// update specific toy at url/api/v1/profile/profile/toy/toy_id
+
+const update = (req, res) => {
+    // find profile
+    db.Profile.findById(req.params.profile_id, (err, foundProfile) => {
+        if(err) {
+            return res
+            .status(400)
+            .json({status: 400, error: 'Something went wrong, please try again.'});
+        }
+        // find toy
+        const toyToUpdate = foundProfile.toys.id(req.params.toy_id);
+        if (!toyToUpdate) {
+            res.status(400).json({status: 400, error: 'Could not find item'});
+        }
+        // update toy in profile record
+        toyToUpdate = req.body;
+            //  postToUpdate.title = req.body.title;
+            //  postToUpdate.content = req.body.content;
+        // save modified profile
+        foundProfile.save((err, savedProfile) => {
+            if(err) {
+                return res
+                .status(400)
+                .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            // Update Post in Post Collection
+            // db.Post.findByIdAndUpdate(req.params.postId, req.body, {new: true}, (err, updatedPost) => {
+            //     if (err) {
+            //     return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+            //     }
+
+            //     res.json(updatedPost);
+            res.json(foundProfile.toys.id(req.params.toy_id));
+        });
+    });
+};
+
+// delete specific toy at url/api/v1/profile/profile/toy/toy_id
+
+const remove = (req, res) => {
+    // find profile
+    db.Profile.findById(req.params.profile_id, (err, foundProfile) => {
+        if(err) {
+            return res
+            .status(400)
+            .json({status: 400, error: 'Something went wrong, please try again.'});
+        }
+        // find toy
+        const toyToDelete = foundProfile.toys.id(req.params.toy_id);
+        if (!toyToDelete) {
+            res.status(400).json({status: 400, error: 'Could not find item'});
+        }
+        // delete toy
+        toyToDelete.remove();
+        // save modified profile
+        foundProfile.save((err, savedProfile) => {
+            if(err) {
+                return res
+                .status(400)
+                .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            //         // Delete Post From Post Collection
+            //   db.Post.findByIdAndDelete(req.params.postId, (err, deletedPost) => {
+            //     if (err) {
+            //       return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+            //     }
+
+            //     res.json(updatedPost);
+            // res.json(foundProfile.toys.id(req.params.toy_id));
+        });
+    });
+};
 
 
 
