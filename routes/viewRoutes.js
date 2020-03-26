@@ -25,9 +25,33 @@ router.get('/signup', (req, res) => {
 
 });
 
+router.get('/main', (req, res) => {
+
+    res.sendFile('/public/views/indexLoggedin.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
 router.get('/toys/:id', (req, res) => {
 
     res.sendFile('/public/views/cards/toysView.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
+router.get('/toysLoggedin/:id', (req, res) => {
+
+    res.sendFile('/public/views/cards/loggedin/toysViewLoggedin.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
+router.get('/favorite', (req, res) => {
+
+    res.sendFile('/public/views/favorite/favorite.html', {
         root: __dirname + '/../',
     });
 
