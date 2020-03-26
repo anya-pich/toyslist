@@ -1,17 +1,29 @@
 const db = require('../models');
 
 // get all user profiles at url/api/v1/profiles
+// get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
 
 const index = (req, res) => {
-    db.Profile.find({}, (err, allProfiles) => {
-        if(err) {
-            return res
-                .status(400)
-                .json({status: 400, error: 'Something went wrong, please try again.'});
-        }
-        res.json(allProfiles);
-    });
-};
+    if (req.query.zipcode) {
+        db.Profile.find({zipcode: req.query.zipcode}, (err, zipcodeProfiles) => {
+            if(err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            res.json(zipcodeProfiles);
+        })
+    } else {
+        db.Profile.find({}, (err, allProfiles) => {
+            if(err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            res.json(allProfiles);
+        });
+    }
+}; // works
 
 // create new user profile at url/api/v1/profiles
 
@@ -29,7 +41,8 @@ const create = (req, res) => {
 // get user profile at url/api/v1/profile/id
 
 const show = (req, res) => {
-    db.Profile.findById(req.params.id, (err, foundProfile) => {
+    const profileID = req.params.id;
+    db.Profile.findById(profileID, (err, foundProfile) => {
         if (err) {
             return res
                 .status(400)
@@ -37,7 +50,7 @@ const show = (req, res) => {
         }
         res.json(foundProfile);
     });
-};
+}; // works
 
 // update user profile at url/api/v1/profile/id
 
@@ -69,22 +82,7 @@ const remove = (req, res) => {
             }
         res.json(deletedProfile);
         });
-};
-
-// get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
-
-const local = (req, res) => {
-    db.Profile.find(
-        {zipcode: req.query.zipcode},
-        (err, zipcodeProfiles) => {
-        if(err) {
-            return res
-                .status(400)
-                .json({status: 400, error: 'Something went wrong, please try again.'});
-        }
-        res.json(zipcodeProfiles);
-    });
-};
+}; 
 
 module.exports = {
     index,
@@ -92,5 +90,4 @@ module.exports = {
     show,
     update,
     remove,
-    local
 };

@@ -3,13 +3,10 @@ const router = express.Router();
 const db = require('../models');
 const ctrl = require('../controllers');
 
-// get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
-
-router.get('/profiles', ctrl.profilesCtrl.local)
-
 // PROFILES
 
 // get all user profiles at url/api/v1/profiles
+// get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
 router.get('/profiles', ctrl.profilesCtrl.index);
 
 // create new user profile at url/api/v1/profiles
