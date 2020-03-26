@@ -25,4 +25,12 @@ router.get('/signup', (req, res) => {
 
 });
 
+router.get('/toys/:id', (req, res) => {
+
+    res.sendFile('/public/views/cards/toysView.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
 module.exports = router;
