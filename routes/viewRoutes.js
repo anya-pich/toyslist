@@ -57,4 +57,12 @@ router.get('/favorite', (req, res) => {
 
 });
 
+router.get('/profile', (req, res) => {
+
+    res.sendFile('/public/views/profile/profile.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
 module.exports = router;

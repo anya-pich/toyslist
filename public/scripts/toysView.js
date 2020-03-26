@@ -27,6 +27,8 @@ function getToy() {
 
 getToy();
 
+$('.profile').append(`<a href="/profile">my profile</a>`);
+
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
   toy.innerHTML = '';
