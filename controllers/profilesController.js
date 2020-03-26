@@ -28,7 +28,7 @@ const index = (req, res) => {
 // create new user profile at url/api/v1/profiles
 
 const create = (req, res) => {
-    db.Profile.post(req.body, (err, newProfile) => {
+    db.Profile.create(req.body, (err, newProfile) => {
         if(err) {
             return res
                 .status(400)
@@ -36,7 +36,7 @@ const create = (req, res) => {
         }
         res.status(201).json(newProfile);
     });
-};
+}; // works
 
 // get user profile at url/api/v1/profile/id
 
@@ -67,7 +67,7 @@ const update = (req, res) => {
             }
         res.json(updatedProfile);
     });
-};
+}; // works
 
 // delete user profile at url/api/v1/profile/id
 
@@ -82,7 +82,7 @@ const remove = (req, res) => {
             }
         res.json(deletedProfile);
         });
-}; 
+}; // works
 
 module.exports = {
     index,

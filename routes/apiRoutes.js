@@ -16,7 +16,7 @@ router.post('/profiles', ctrl.profilesCtrl.create);
 router.get('/profile/:id', ctrl.profilesCtrl.show);
 
 // update user profile at url/api/v1/profile/id
-router.put('/profile/:id', ctrl.profilesCtrl.show);
+router.put('/profile/:id', ctrl.profilesCtrl.update);
 
 // delete user profile at url/api/v1/profile/id
 router.delete('/profile/:id', ctrl.profilesCtrl.remove);
