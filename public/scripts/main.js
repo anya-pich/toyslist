@@ -59,36 +59,68 @@ fetch(`${API_BASE}/profiles`)
   .then(res => render(res))
   .catch((err) => console.log(err));
 
+  // get all toys from a zip code
+// fetch(`${API_BASE}/profiles?zipcode=${userZipcode}`)
+//   .then((stream) => stream.json())
+//   .then(res => render(res))
+//   .catch((err) => console.log(err));
+
 // TEMP API CALL
 // render(TEMP_CITIES);
 
-function render(toysArray) {
-  const toyTemplates = toysArray.map((toy) => getToyTemplate(toy)).join('');
+// render toys to html
+function render(profilesArr) {
+  console.log('got profiles', profilesArr);
+  const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
+  console.log('got templates', toyTemplates);
   toys.insertAdjacentHTML('beforeend', toyTemplates);
-}
+};
 
-function getToyTemplate(json) {
-// for(let i in user.toys) {
-// 	console.log(i);
-let toysAll = [];
-console.log(json.toys);
-for (let i=0;i<json.length;i++){
-toysAll.push(json[i].toys);
-console.log(toysAll);};
-// for(let i=0; i<toysAll.length; i++) {
-  return `
-    <div class="col-md-4 mb-4">
-      <div id="${json.toys[0]._id}" class="card">
-        <img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
-        <div class="card-body">
-          <h5>${json.toys[0].title}</h5>
-          <p class="card-text">${json.toys[0].description}</p>
-          <a href="/toys/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
-        </div>
+// get concatenated toy templates for each profile
+function getToyTemplates(profile) {
+  return profile.toys.reduce((accumulator, toy) => accumulator.concat(
+    `<div class="col-md-4 mb-4">
+    <div id="${toy._id}" class="card">
+      <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
+      <div class="card-body">
+        <h5>${toy.title}</h5>
+        <p class="card-text">${toy.description}</p>
+        <p class="card-text text-muted float-left">${toy.price}</p>
+        <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
       </div>
     </div>
-  `;
+  </div>`
+  ), '');
 };
+
+
+// function render(toysArray) {
+//   const toyTemplates = toysArray.map((toy) => getToyTemplate(toy)).join('');
+//   toys.insertAdjacentHTML('beforeend', toyTemplates);
+// }
+
+// function getToyTemplate(json) {
+// // for(let i in user.toys) {
+// // 	console.log(i);
+// let toysAll = [];
+// console.log(json.toys);
+// for (let i=0;i<json.length;i++){
+// toysAll.push(json[i].toys);
+// console.log(toysAll);};
+// // for(let i=0; i<toysAll.length; i++) {
+//   return `
+//     <div class="col-md-4 mb-4">
+//       <div id="${json.toys[0]._id}" class="card">
+//         <img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
+//         <div class="card-body">
+//           <h5>${json.toys[0].title}</h5>
+//           <p class="card-text">${json.toys[0].description}</p>
+//           <a href="/toys/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
+//         </div>
+//       </div>
+//     </div>
+//   `;
+// };
 // }
 
 
@@ -113,8 +145,6 @@ console.log(toysAll);};
 // 	};
 // };
 // });
-
-
 
 
 

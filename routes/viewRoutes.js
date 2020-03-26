@@ -33,7 +33,15 @@ router.get('/main', (req, res) => {
 
 });
 
-router.get('/toys/:id', (req, res) => {
+// router.get('/toys/:id', (req, res) => {
+
+//     res.sendFile('/public/views/cards/toysView.html', {
+//         root: __dirname + '/../',
+//     });
+
+// });
+
+router.get('/profile/:id/toy/:id', (req, res) => {
 
     res.sendFile('/public/views/cards/toysView.html', {
         root: __dirname + '/../',
