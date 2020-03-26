@@ -10,11 +10,11 @@ fetch(`${API_BASE}/profiles`)
 
 // TEMP API CALL
 // render(TEMP_CITIES);
-  // $(.profile).append(`<a href="/profile">my profile</a>`)
 
 function render(toysArray) {
   const toyTemplates = toysArray.map((toy) => getToyTemplate(toy)).join('');
   toys.insertAdjacentHTML('beforeend', toyTemplates);
+
   $('.profile').append(`<a href="/profile">my profile</a>`);
 }
 
@@ -23,6 +23,7 @@ function getToyTemplate(json) {
 // 	console.log(i);
 
 // for(let i=0; i<toysAll.length; i++) {
+
   return `
     <div class="col-md-4 mb-4">
       <div id="${json.toys[0]._id}" class="card">
