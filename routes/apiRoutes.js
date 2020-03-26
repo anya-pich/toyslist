@@ -13,9 +13,9 @@ const ctrl = require('../controllers');
 // router.get('/toys', ctrl.toysCtrl.)
 
 
-// router.get('/toys', ctrl.toysCtrl.index);
+router.get('/toys', ctrl.toysCtrl.index);
 
-// router.get('/toys/:id', ctrl.toysCtrl.show);
+router.get('/toys/:id', ctrl.toysCtrl.show);
 
 // get all user profiles at url/api/v1/profiles
 router.get('/profiles', ctrl.profilesCtrl.index);
