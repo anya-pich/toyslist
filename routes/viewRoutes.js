@@ -25,7 +25,12 @@ router.get('/signup', (req, res) => {
 
 });
 
-// serve whatever.file at url/what/ever
-// for example
+router.get('/toys/:id', (req, res) => {
+
+    res.sendFile('/public/views/cards/toysView.html', {
+        root: __dirname + '/../',
+    });
+
+});
 
 module.exports = router;

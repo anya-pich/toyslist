@@ -152,7 +152,7 @@ db.Profile.deleteMany({}, (err, result) => {
 
     console.log(`Deleted ${result.deletedCount} profiles.`);
 
-    db.Profile.insertMany(users, (err, newProfiles) => {
+    db.Profile.create(users, (err, newProfiles) => {
 
         if (err) {
             console.log(err);
