@@ -1,7 +1,7 @@
 const db = require('./models');
 
 const users = [
-    {
+    customers:{
         name: 'Bob',
         email: 'bob@gmail.com',
         phone: '415-777-7777',
@@ -141,42 +141,122 @@ const users = [
 
 // https://source.unsplash.com/100x100/?toys
 
+
+
+
 db.Profile.deleteMany({}, (err, result) => {
     if (err) {
-      console.log(err);
-      process.exit();
-    }
-  
-    console.log(`Successfully deleted ${result.deletedCount} profiles.`);
-  
-    db.Profile.create(users, (err, newProfiles) => {
-      if (err) {
         console.log(err);
         process.exit();
-      }
-  
-      console.log(`Successfully created ${newProfiles.length} profiles.`);
-      process.exit();
+    }
+
+    console.log(`Deleted ${result.deletedCount} profiles.`);
+
+    db.Profile.create(users, (err, newProfiles) => {
+
+        if (err) {
+            console.log(err);
+            process.exit();
+        }
+
+        console.log(`Made ${newProfiles.length} profiles.`);
+
+        db.Toy.deleteMany({}, (err, result) => {
+            if (err) {
+                console.log(err);
+                process.exit();
+            }
+        
+            console.log(`Deleted ${result.deletedCount} toys.`);
+        
+            db.Toy.create(toys, (err, newToys) => {
+        
+                if (err) {
+                    console.log(err);
+                    process.exit();
+                }
+                
+                // for (let i=0; i<toys.length; i++) {
+
+                // }
+
+
+                console.log(`Made ${newToys.length} toys.`);
+                process.exit();
+        
+            });
+        });
+
     });
 });
 
-  // run node seed in terminal before starting server to populate database
 
 
+// db.Profile.deleteMany({}, (err, result) => {
+//     if (err) {
+//         console.log(err);
+//         process.exit();
+//     }
 
-//   {
-//     "name": "Juju",
-//     "email": "juju@gmail.com",
-//     "phone": "415-999-1234",
-//     "zipcode": 94222,
-//     "toys": [
-//         {
-//             "title": "bike",
-//             "description": "My old bicycle.",
-//             "images": ["https://source.unsplash.com/100x100/?bike"],
-//             "price": "Priceless",
-//             "ageTag": "10+",
-//             "genderTag": "None"
+//     console.log(`Deleted ${result.deletedCount} profiles.`);
+
+//     db.Profile.create(users, (err, newProfiles) => {
+
+//         if (err) {
+//             console.log(err);
+//             process.exit();
 //         }
-//     ]
-// }
+
+//         console.log(`Made ${newProfiles.length} profiles.`);
+
+//         db.Toy.deleteMany({}, (err, result) => {
+//             if (err) {
+//                 console.log(err);
+//                 process.exit();
+//             }
+        
+//             console.log(`Deleted ${result.deletedCount} toys.`);
+        
+//             db.Toy.create(toys, (err, newToys) => {
+        
+//                 if (err) {
+//                     console.log(err);
+//                     process.exit();
+//                 }
+                
+//                 // for (let i=0; i<toys.length; i++) {
+
+//                 // }
+
+
+//                 console.log(`Made ${newToys.length} toys.`);
+//                 process.exit();
+        
+//             });
+//         });
+
+//     });
+// });
+
+
+
+// run node seed in terminal before connecting the server to populate database
+
+
+   
+//       City.findById(req.params.cityId, (err, foundCity) => {
+//         if (err) {
+//           return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+//         }
+//         // Add Post To City
+//         foundCity.posts.push(newPost);
+//         // Save Modified City
+//         foundCity.save((err, savedCity) => {
+//           if (err) {
+//             return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
+//           }
+//           res.json(newPost);
+//         });
+//       });
+//     });
+//   });
