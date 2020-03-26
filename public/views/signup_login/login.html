@@ -11,7 +11,7 @@
  	<link rel="stylesheet" href="/styles/main.css">
 
   	<!-- Main JS -->
-  	<script defer src="/scripts/main.js"></script>
+  	<script defer src="/scripts/login.js"></script>
 
 	<title>Login</title>
 </head>
@@ -20,31 +20,32 @@
 		<article class="card-body">
 		<h4 class="card-title text-center mb-4 mt-1">Login</h4>
 		<hr>
-		<p class="text-danger text-center">You've already signed up, please login</p>
 			<form>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-prepend">
 						    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 						 </div>
-						<input name="" class="form-control" placeholder="input Email to Login" type="email">
+						<input value="" class="form-control" placeholder="input Email to Login" type="email">
 					</div> <!-- input-group.// -->
-
 				</div> <!-- form-group// -->
-				<div class="form-group">
+
+<!-- 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-prepend">
 						    <span> <i class="fa fa-lock"></i> </span>
-						 </div>
+						 </div> -->
 					    <!-- <input class="form-control" placeholder="******" type="password"> -->
-					</div> <!-- input-group.// -->
-				</div> <!-- form-group// -->
+					<!-- </div>  --><!-- input-group.// -->
+				<!-- </div> --> <!-- form-group// -->
 
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary btn-block"> Login  </button>
 				</div> <!-- form-group// -->
 <!-- 					<p class="text-center"><a href="/signup_login/forget.html" class="btn">Forgot password?</a></p> -->
 			</form>
+			<a class="text-warning text-center" href="/main">Login</a>
+			<a class="text-primary text-center" href="/signup">Don't have an account yet? Go to Sign up!</a>
 		</article>
 	</div> <!-- card.// -->
 
