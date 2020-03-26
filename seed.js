@@ -139,6 +139,9 @@ const toys = [
 
 // https://source.unsplash.com/300x300/?toys
 
+
+
+
 db.Profile.deleteMany({}, (err, result) => {
     if (err) {
         console.log(err);
@@ -155,31 +158,85 @@ db.Profile.deleteMany({}, (err, result) => {
         }
 
         console.log(`Made ${newProfiles.length} profiles.`);
-        process.exit();
+
+        db.Toy.deleteMany({}, (err, result) => {
+            if (err) {
+                console.log(err);
+                process.exit();
+            }
+        
+            console.log(`Deleted ${result.deletedCount} toys.`);
+        
+            db.Toy.create(toys, (err, newToys) => {
+        
+                if (err) {
+                    console.log(err);
+                    process.exit();
+                }
+                
+                // for (let i=0; i<toys.length; i++) {
+
+                // }
+
+
+                console.log(`Made ${newToys.length} toys.`);
+                process.exit();
+        
+            });
+        });
 
     });
 });
 
-db.Toy.deleteMany({}, (err, result) => {
-    if (err) {
-        console.log(err);
-        process.exit();
-    }
 
-    console.log(`Deleted ${result.deletedCount} toys.`);
 
-    db.Toy.create(toys, (err, newToys) => {
+// db.Profile.deleteMany({}, (err, result) => {
+//     if (err) {
+//         console.log(err);
+//         process.exit();
+//     }
 
-        if (err) {
-            console.log(err);
-            process.exit();
-        }
+//     console.log(`Deleted ${result.deletedCount} profiles.`);
 
-        console.log(`Made ${newToys.length} toys.`);
-        process.exit();
+//     db.Profile.create(users, (err, newProfiles) => {
 
-    });
-});
+//         if (err) {
+//             console.log(err);
+//             process.exit();
+//         }
+
+//         console.log(`Made ${newProfiles.length} profiles.`);
+
+//         db.Toy.deleteMany({}, (err, result) => {
+//             if (err) {
+//                 console.log(err);
+//                 process.exit();
+//             }
+        
+//             console.log(`Deleted ${result.deletedCount} toys.`);
+        
+//             db.Toy.create(toys, (err, newToys) => {
+        
+//                 if (err) {
+//                     console.log(err);
+//                     process.exit();
+//                 }
+                
+//                 // for (let i=0; i<toys.length; i++) {
+
+//                 // }
+
+
+//                 console.log(`Made ${newToys.length} toys.`);
+//                 process.exit();
+        
+//             });
+//         });
+
+//     });
+// });
+
+
 
 // run node seed in terminal before connecting the server to populate database
 
