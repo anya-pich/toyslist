@@ -71,26 +71,27 @@ fetch(`${API_BASE}/profiles`)
 // render toys to html
 function render(profilesArr) {
   console.log('got profiles', profilesArr);
+  const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
+  console.log('got templates', toyTemplates);
+  toys.insertAdjacentHTML('beforeend', toyTemplates);
+};
 
-  const toysArr = profilesArr.reduce(
-    (toysArr, profile) => toysArr.concat(profile.toys), []
-  );
-  console.log('rendering toys', toysArr);
-  const toyTemplates = toysArr.reduce((htmlStr, toy) => htmlStr.concat(
+// get concatenated toy templates for each profile
+function getToyTemplates(profile) {
+  return profile.toys.reduce((accumulator, toy) => accumulator.concat(
     `<div class="col-md-4 mb-4">
     <div id="${toy._id}" class="card">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
         <h5>${toy.title}</h5>
         <p class="card-text">${toy.description}</p>
+        <p class="card-text text-muted float-left">${toy.price}</p>
         <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
       </div>
     </div>
   </div>`
   ), '');
-  toys.insertAdjacentHTML('beforeend', toyTemplates);
 };
-
 
 
 // function render(toysArray) {
