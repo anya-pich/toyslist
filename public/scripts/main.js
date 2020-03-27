@@ -45,7 +45,7 @@ function render(profilesArr) {
 // get concatenated toy templates for each profile
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
-  `<div class="col-md-4 mb-4">
+  `<div class="col-md-3 mb-4">
     <div id="${toy._id}" class="card h-100">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
@@ -124,8 +124,9 @@ loginForm.addEventListener('submit', (event) => {
       }
     })
     .catch((err) => console.log(err));
-}
+});
 
+// sign up and go to profile
 
 // sign up and go to profile
 
@@ -162,6 +163,10 @@ signupForm.addEventListener('submit', (event) => {
     .catch((err) => console.log(err));
 })
 
+$(document).on("click","#switchToLogin",function(){
+  $('#signUpModal').modal('hide');
+  $('#loginModal').modal('show');
+});
 
 
 $(document).on("click","#switchToSignUp",function(){

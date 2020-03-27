@@ -13,7 +13,7 @@ function getToy() {
 
 getToy();
 
-$('.profile').append(`<a href="/profile">my profile</a>`);
+$('.profile').append(`<a href="/profile" class="btn btn-outline-primary">my profile</a>`);
 
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
@@ -56,7 +56,7 @@ function getToyTemplate(toy) {
       <div class="modal-body">
         <dl class="row">
         <dt class="col-sm-3">Name:</dt>
-        <dd class="col-sm-9">${profile.toy.name}</dd>
+        <dd class="col-sm-9">${toy.title}</dd>
         <dt class="col-sm-3">Email:</dt>
         <dd class="col-sm-9">${toy.ageTag}</dd>
         <dt class="col-sm-3">Phone:</dt>

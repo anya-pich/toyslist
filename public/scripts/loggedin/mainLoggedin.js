@@ -15,21 +15,24 @@ fetch(`${API_BASE}/profiles`)
 function render(profilesArr) {
   const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
   toys.insertAdjacentHTML('beforeend', toyTemplates);
-  $('.profile').append(`<a href="/profile" class="btn btn-outline-primary btn-rounded btn-md mr-lg-2">my profile</a>`);
+  $('.profile').append(`<a href="/profile/:id" class="btn btn-outline-primary btn-rounded btn-md mr-lg-2">my profile</a>`);
 };
 
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
-    `<div class="col-md-3 mb-4">
-      <div id="${toy._id}" class="card" style="height:450px;">
-        <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
-        <div class="card-body">
-          <h5>${toy.title}</h5>
-          <p class="card-text">${toy.description}</p>
-          <p class="card-text text-muted float-left">${toy.price}</p>
-          <a href="toysLoggedin/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
-        </div>
+  `<div class="col-md-3 mb-4">
+    <div id="${toy._id}" class="card h-100">
+      <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
+      <div class="card-body">
+        <h5 class="card-title">${toy.title}</h5>
+        <p class="card-text text-truncate">${toy.description}</p>
+        <h6 class="card-subtitle mb-2 text-muted">${toy.price}</h6>
+        <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
       </div>
-    </div>`
+      <div class="card-footer text-center">
+        <small class="text-muted">Posted by ${profile.name}</small>
+      </div>
+    </div>
+  </div>`
   ), '');
 };
