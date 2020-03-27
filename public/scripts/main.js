@@ -55,7 +55,7 @@ function getToyTemplates(profile) {
         <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
       </div>
       <div class="card-footer text-center">
-        <small class="text-muted">Posted ${Math.floor(((Date.now())-(new Date(toy.createdAt)))/1000/60/60)} hours ago</small>
+        <small class="text-muted">Posted by ${profile.name}</small>
       </div>
     </div>
   </div>`
@@ -90,24 +90,89 @@ const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const email = document.getElementById('emailInput').value.split('@').join('%40');
-  console.log(email);
-  fetch(`/api/v1/profiles?email=${email}`, {
-    method: 'GET'
+  const email = document.getElementById('emailInputL').value;
+
+//   fetch(`/api/v1/profiles?email=${email}`, {
+//     method: 'GET'
+//   })
+//     .then((stream) => stream.json())
+//     .then((res) => {
+//       console.log(res);
+//       window.location = `/profile/${res}`;
+//     })
+//     .catch((err) => console.log(err));
+// })
+
+  const userDataS = {
+    email,
+  }
+
+  fetch(`/api/v1`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'credentials': 'include', // This must be included in all API requests until user logs out
+    },
+    body: JSON.stringify(userDataS),
   })
     .then((stream) => stream.json())
     .then((res) => {
-      console.log(res);
-      window.location = `/profile/${res}`;
+      if (res.status === 200) {
+        window.location = '/profile';
+      } else {
+        console.log(res);
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+
+// sign up and go to profile
+
+const signupForm = document.getElementById('signupForm');
+
+signupForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = document.getElementById('nameInput').value;
+  const email = document.getElementById('emailInputS').value;
+  const phone = document.getElementById('phoneInput').value;
+  const zipcode = document.getElementById('zipcodeInput').value;
+
+  const userDataS = {
+    name,
+    email,
+    phone,
+    zipcode,
+  };
+
+  fetch(`/api/v1/profiles?email=${email}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      if (res.status === 201) {
+        window.location = '/login';
+      } else {
+      window.location = `/profile/${res}`;      }
     })
     .catch((err) => console.log(err));
 })
 
 
 
+$(document).on("click","#switchToSignUp",function(){
+  $('#loginModal').modal('hide');
+  $('#signUpModal').modal('show');
+});
 
-
-
+$(document).on("click","#switchToLogin",function(){
+  $('#signUpModal').modal('hide');
+  $('#loginModal').modal('show');
+});
 
 
 
@@ -263,7 +328,6 @@ loginForm.addEventListener('submit', (event) => {
 // 	function onError(json) {
 // 		console.log("Error");
 // 	};
-
 
 
 

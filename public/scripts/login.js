@@ -1,17 +1,9 @@
+$(document).on("click","#switchToSignUp",function(){
+  $('#loginModal').modal('hide');
+  $('#signUpModal').modal('show');
+});
 
-// $(document).ready(function(){
-// const db = require('./models')
-// $('#login').on('submit',function(e) {
-// 	e.preventDefault();
-
-// 	$.ajax({
-// 		method: 'GET',
-// 		url:'http://api/v1/profiles',
-// 		success: onSuccess,
-// 		error: onError,
-// });
-
-// function onSuccess (json) {
-	
-// }
-// });
+$(document).on("click","#switchToLogin",function(){
+  $('#signUpModal').modal('hide');
+  $('#loginModal').modal('show');
+});
