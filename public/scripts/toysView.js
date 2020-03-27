@@ -68,7 +68,7 @@ function getToyTemplate(toy) {
         </button>
       </div>
       <div class="modal-body">
-      <h5 class="text-center">Please login to see the seller contact!</h5>
+      <h5 class="text-center">Please login to enjoy the feature!</h5>
       </div>
       <div class="modal-footer">
         <a href='/signup' class="btn btn-primary">Signup</a>

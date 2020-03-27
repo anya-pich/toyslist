@@ -81,7 +81,3 @@ window.onclick = function(event) {
     }
 }
 
-      // <section>
-      //   <h4 class="mb-4">${toy.posts.length ? 'Posts:' : ''}</h4>
-      //   ${getPostTemplates(toy.posts)}
-      // </section>
