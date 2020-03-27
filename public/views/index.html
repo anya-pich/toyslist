@@ -36,10 +36,12 @@
 			<form class="form-inline md-form ml-auto mb-1">
 	            <li class="nav-item">
 	              <a class="nav-link" href="/signup">Sign up</a>
-	            </li>
+				</li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="/login">Login</a>
-	            </li>
+	              <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+				</li>
+				<!-- <button class="nav-item" type="button" data-toggle="modal" data-target="#loginModal">Log In</button>
+				<button class="nav-item" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button> -->
         	</form>
           </ul>
         </div>
@@ -55,7 +57,7 @@
       <div id="toys" class="row"></div>
 	</section>
 
-		<!-- Modal popup -->
+		<!-- Modal for zipcode -->
 		<div class="modal fade" id="zipcodeModal" tabindex="-1" role="dialog" aria-labelledby="zipcodeModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -78,6 +80,65 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal for login -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header p-3">
+						<h5 class="modal-title" id="zipcodeModalLabel">Log in</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body p-3">
+						<form action="/profile" method="get" id="loginForm">
+							<div class="form-group">
+							  <label for="emailInput">Email address</label>
+							  <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+							  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							<div class="form-group">
+							  <label for="passwordInput">Password</label>
+							  <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+							</div>
+							<div class="form-check">
+							  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+							  <label class="form-check-label" for="exampleCheck1">Remember me on this computer</label>
+							</div>
+							<button type="submit" class="btn btn-primary float-right" id="loginButton">Submit</button>
+						</form>
+					</div>
+					<div class="modal-footer p-3 text-muted">
+						Or create a <a class="link" data-toggle="modal" data-target="#signUpModal"><u>new account</u></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for sign up -->
+		<!-- <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="zipcodeModalLabel">Welcome!</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form action="/cookie" method="post">
+						<div class="modal-body">
+							<label for="zipcode" class="col-form-label">See listings in your zipcode:</label>
+							<input type="text" class="form-control" id="zipcodeInput" name="zipcode">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div> -->
 
 	</main>
 

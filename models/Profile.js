@@ -7,6 +7,7 @@ const ProfileSchema = new mongoose.Schema({
     email: String,
     phone: String,
     zipcode: Number,
+    pic: String,
     toys: [Toy.schema]
 });
 
