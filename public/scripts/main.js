@@ -45,7 +45,7 @@ function render(profilesArr) {
 // get concatenated toy templates for each profile
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
-  `<div class="col-md-4 mb-4">
+  `<div class="col-md-3 mb-4">
     <div id="${toy._id}" class="card h-100">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
@@ -90,7 +90,6 @@ const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-<<<<<<< HEAD
   const email = document.getElementById('emailInputL').value;
 
 //   fetch(`/api/v1/profiles?email=${email}`, {
@@ -125,7 +124,7 @@ loginForm.addEventListener('submit', (event) => {
       }
     })
     .catch((err) => console.log(err));
-}
+});
 
 
 // sign up and go to profile
