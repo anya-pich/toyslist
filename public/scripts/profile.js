@@ -98,4 +98,6 @@ function deletePost(event) {
           buildProfile();
         })
         .catch((err) => console.log(err));
-}
+
+} //works
+

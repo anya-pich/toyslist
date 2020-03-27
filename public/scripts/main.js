@@ -90,6 +90,7 @@ const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
+<<<<<<< HEAD
   const email = document.getElementById('emailInputL').value;
 
 //   fetch(`/api/v1/profiles?email=${email}`, {
@@ -328,7 +329,6 @@ $(document).on("click","#switchToLogin",function(){
 // 	function onError(json) {
 // 		console.log("Error");
 // 	};
-
 
 
 

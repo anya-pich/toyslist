@@ -77,7 +77,7 @@ const update = (req, res) => {
         }
         // find toy
         const toyToUpdate = foundProfile.toys.id(req.params.toy_id);
-        res.send(toyToUpdate);
+       
         if (!toyToUpdate) {
             res.status(400).json({status: 400, error: 'Could not find item'});
         }
@@ -95,14 +95,7 @@ const update = (req, res) => {
                 .status(400)
                 .json({status: 400, error: 'Something went wrong, please try again.'});
             }
-            // Update Post in Post Collection
-            // db.Post.findByIdAndUpdate(req.params.postId, req.body, {new: true}, (err, updatedPost) => {
-            //     if (err) {
-            //     return res.status(400).json({status: 400, error: 'Something went wrong, please try again'});
-            //     }
-
-            //     res.json(updatedPost);
-            // res.json(foundProfile.toys.id(req.params.toy_id));
+            res.send(toyToUpdate);
         });
     });
 }; // overwrites everything and sends back the wrong thing

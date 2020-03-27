@@ -30,13 +30,13 @@ router.get('/profile/:profile_id/toys', ctrl.toysCtrl.index);
 // create new toy listing at url/api/v1/profile/profile_id/toys
 router.post('/profile/:profile_id/toys', ctrl.toysCtrl.create);
 
-// get specific toy at url/api/v1/profile/profile/toy/toy_id
+// get specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.get('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.show);
 
-// update specific toy at url/api/v1/profile/profile/toy/toy_id
+// update specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 
-// delete specific toy at url/api/v1/profile/profile/toy/toy_id
+// delete specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
 
 // POST Signup 
