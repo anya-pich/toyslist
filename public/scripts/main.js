@@ -71,14 +71,18 @@ function render(profilesArr) {
 // get concatenated toy templates for each profile
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
-    `<div class="col-md-4 mb-4">
-    <div id="${toy._id}" class="card">
+  `<div class="col-md-4 mb-4">
+    <div id="${toy._id}" class="card h-100">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
-        <h5>${toy.title}</h5>
-        <p class="card-text">${toy.description}</p>
-        <p class="card-text text-muted float-left">${toy.price}</p>
+        <h5 class="card-title">${toy.title}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${toy.price}</h6>
+        <p class="card-text text-truncate">${toy.description}</p>
+        </container>
         <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
+      </div>
+      <div class="card-footer text-center">
+        <small class="text-muted">Posted ${Math.floor(((Date.now())-(new Date(toy.createdAt)))/1000/60/60)} hours ago</small>
       </div>
     </div>
   </div>`
