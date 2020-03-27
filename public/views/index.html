@@ -11,8 +11,6 @@
  	<link rel="stylesheet" href="/styles/main.css">
 
   	<!-- Main JS -->
-
-  	<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 	
   	<script defer src="/scripts/main.js"></script>
 
 	<title>Toyslist</title>
@@ -27,18 +25,18 @@
         </button> -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
-          	<form class="form-inline md-form ml-auto mb-1">
-		  		<input class="form-control mr-sm-2" type="text" placeholder="Search" value="">
+			<form class="form-inline md-form ml-auto mb-1" action="/search" method="post">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" value="" name="search">
 		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
-
-		  		<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="">
-		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Enter</button>
-<!-- 		  		<button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Enter Zipcode</button> -->
-
+			</form>
+			<form id="zipcodeForm" class="form-inline md-form ml-auto mb-1" action="/cookie" method="post">
+				<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
+		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>
+			</form>
+			<form class="form-inline md-form ml-auto mb-1">
 	            <li class="nav-item">
 	              <a class="nav-link" href="/signup">Sign up</a>
 	            </li>
-
 	            <li class="nav-item">
 	              <a class="nav-link" href="/login">Login</a>
 	            </li>
@@ -54,14 +52,42 @@
     <!-- Cities Section -->
     <section class="container">
       <div id="toys" class="row"></div>
-    </section>
-  </main>
+	</section>
 
+		<!-- Modal popup -->
+		<div class="modal fade" id="zipcodeModal" tabindex="-1" role="dialog" aria-labelledby="zipcodeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="zipcodeModalLabel">Welcome!</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form action="/cookie" method="post">
+						<div class="modal-body">
+							<label for="zipcode" class="col-form-label">See listings in your zipcode:</label>
+							<input type="text" class="form-control" id="zipcodeInput" name="zipcode">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
+	</main>
+
+	<!-- AJAX JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+	
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
   <!-- Footer -->
