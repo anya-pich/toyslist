@@ -6,6 +6,7 @@ const users = [
         email: 'bob@gmail.com',
         phone: '415-777-7777',
         zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1545231584-45aac96e37d7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300',
         toys: [
             {
                 title: 'lego tower',
@@ -22,6 +23,7 @@ const users = [
         email: 'daphne@gmail.com',
         phone: '415-666-7777',
         zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1572452161106-1cc56d0ca1f5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300',
         toys: [
             {
                 title: 'captain america',
@@ -54,6 +56,7 @@ const users = [
         email: 'jo@gmail.com',
         phone: '415-555-7777',
         zipcode: '94222',
+        pic: 'https://images.unsplash.com/photo-1572355700137-bac0744314af?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300',
         toys: [
             {
                 title: 'zoo animals',
@@ -86,6 +89,7 @@ const users = [
         email: 'uneeq@gmail.com',
         phone: '415-999-7777',
         zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1556941975-8963a1f2a5a8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300',
         toys: [
             {
                 title: 'lego darth vader',
@@ -110,6 +114,7 @@ const users = [
         email: 'hamza@hotmail.com',
         phone: '415-888-7777',
         zipcode: '94222',
+        pic: 'https://images.unsplash.com/photo-1559694676-894023937f60?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300',
         toys: [
             {
                 title: 'social media kit',
@@ -140,6 +145,7 @@ const users = [
 ];
 
 // https://source.unsplash.com/100x100/?toys
+// https://source.unsplash.com/300x300/?face
 
 db.Profile.deleteMany({}, (err, result) => {
     if (err) {
