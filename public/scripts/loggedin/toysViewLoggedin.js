@@ -56,7 +56,7 @@ function getToyTemplate(toy) {
       <div class="modal-body">
         <dl class="row">
         <dt class="col-sm-3">Name:</dt>
-        <dd class="col-sm-9">${toy.name}</dd>
+        <dd class="col-sm-9">${profile.toy.name}</dd>
         <dt class="col-sm-3">Email:</dt>
         <dd class="col-sm-9">${toy.ageTag}</dd>
         <dt class="col-sm-3">Phone:</dt>

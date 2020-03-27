@@ -7,6 +7,7 @@ const ctrl = require('../controllers');
 
 // get all user profiles at url/api/v1/profiles
 // get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
+// get profile id by email address at url/api/v1/profiles?email=bob%40gmail.com
 router.get('/profiles', ctrl.profilesCtrl.index);
 
 // create new user profile at url/api/v1/profiles
@@ -37,5 +38,14 @@ router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 
 // delete specific toy at url/api/v1/profile/profile/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
+
+// POST Signup 
+router.post('/register', ctrl.authCtrl.register);
+
+// POST Login
+router.post('/login', ctrl.authCtrl.login);
+
+// DELETE Logout
+router.delete('/logout', ctrl.authCtrl.logout);
 
 module.exports = router;
