@@ -39,13 +39,13 @@ router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 // delete specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
 
-// POST Signup 
-router.post('/register', ctrl.authCtrl.register);
+// // POST Signup 
+// router.post('/register', ctrl.authCtrl.register);
 
-// POST Login
-router.post('/login', ctrl.authCtrl.login);
+// // POST Login
+// router.post('/login', ctrl.authCtrl.login);
 
-// DELETE Logout
-router.delete('/logout', ctrl.authCtrl.logout);
+// // DELETE Logout
+// router.delete('/logout', ctrl.authCtrl.logout);
 
 module.exports = router;
