@@ -12,7 +12,16 @@ const index = (req, res) => {
                     .json({status: 400, error: 'Something went wrong, please try again.'});
             }
             res.json(zipcodeProfiles);
-        })
+        });
+    } else if (req.query.email) {
+        db.Profile.find({email: req.query.email}, (err, profile) => {
+            if(err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            res.send(profile[0]._id);
+        });
     } else {
         db.Profile.find({}, (err, allProfiles) => {
             if(err) {

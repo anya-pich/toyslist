@@ -7,6 +7,7 @@ const ctrl = require('../controllers');
 
 // get all user profiles at url/api/v1/profiles
 // get all profiles by zipcode at url/api/v1/profiles?zipcode=00000
+// get profile id by email address at url/api/v1/profiles?email=bob%40gmail.com
 router.get('/profiles', ctrl.profilesCtrl.index);
 
 // create new user profile at url/api/v1/profiles
