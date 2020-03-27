@@ -49,7 +49,7 @@ router.get('/profile/:id/toy/:id', (req, res) => {
 
 });
 
-router.get('/toysLoggedin/:id', (req, res) => {
+router.get('/toysLoggedin/:id/toy/:id', (req, res) => {
 
     res.sendFile('/public/views/cards/loggedin/toysViewLoggedin.html', {
         root: __dirname + '/../',

@@ -31,11 +31,9 @@ getToy();
 $('.profile').append(`<a href="/profile">my profile</a>`);
 
 function render(toyObj) {
-  console.log(toyObj);
   const toyTemplate = getToyTemplate(toyObj);
   toy.innerHTML = '';
   toy.insertAdjacentHTML('beforeend', toyTemplate);
-  console.log(toy);
 }
 
 function getToyTemplate(toy) {
@@ -55,10 +53,40 @@ function getToyTemplate(toy) {
         <dt class="col-sm-3">Posted:</dt>
         <dd class="col-sm-9">${date.toDateString()}</dd>
       </dl>
-      <a class="btn btn-primary" href="/profile/${profileId}" role="button">Contact seller</a>
-      <button class="btn btn-secondary" type="submit">Add to cart</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Contact the seller
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add to My Favorite</button>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <h5 class="text-center">Please login to see the seller contact!</h5>
+      </div>
+      <div class="modal-footer">
+        <a href='/signup' class="btn btn-primary">Signup</a>
+        <a href='/login' class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
   `;
+}
+
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
       // <section>
