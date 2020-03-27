@@ -1,4 +1,7 @@
-main {
-    min-height: 84vh;
-  }
-  
+.card{
+  overflow: hidden;
+}
+
+.card-text{
+  word-wrap: break-word;
+}

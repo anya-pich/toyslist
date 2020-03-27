@@ -34,10 +34,11 @@ const setZip = (zipcode) => {
 
 // render toys to html
 function render(profilesArr) {
+
   toys.innerHTML = '';
-  console.log('got profiles', profilesArr);
+
   const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
-  console.log('got templates');
+
   toys.insertAdjacentHTML('beforeend', toyTemplates);
 };
 
