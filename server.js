@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -16,22 +17,20 @@ const routes = require('./routes');
 
 // --------------------------------------- MIDDLEWARE --------------------------------------- //
 
-// Serve Public Directory
+// serve Public directory
 app.use(express.static(`${__dirname}/public`));
 
 // BodyParser - Make Request Data Avaialble on req.body
 app.use(bodyParser.json());
 
-// Get url encoded queries & params
-app.use(bodyParser.urlencoded({ extended: false})); // maybe
+// get url encoded queries & params
+app.use(bodyParser.urlencoded({ extended: false}));
+
+app.use(cookieParser());
 
 // -------------------------------------- HTML ROUTES --------------------------------------- //
 
 app.use('/', routes.views);
-
-// app.get('/test', (req, res) => {
-//     res.send('right back at you');
-// });
 
 // -------------------------------------- API ROUTES ---------------------------------------- //
 
