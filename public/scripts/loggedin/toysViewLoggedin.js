@@ -1,22 +1,7 @@
 
 const API_BASE = '/api/v1';
 const toy = document.getElementById('toy');
-// const toyId = window.location.pathname.split('/')[2];
 const [,,profileId,,toyId] = window.location.pathname.split('/');
-
-// const TEMP_TOY = {
-//   "images": [
-//       "https://images.unsplash.com/photo-1520627977056-c307aeb9a625?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=150"
-//   ],
-//   "_id": "5e7cf006925fa426bdcba947",
-//   "title": "so many lego people",
-//   "description": "Elit est dolor ad laborum ipsum cupidatat ad laboris magna Lorem amet dolor in nostrud.",
-//   "price": "$15.00",
-//   "ageTag": "5+",
-//   "genderTag": "all",
-//   "createdAt": "2020-03-26T18:10:14.305Z",
-//   "updatedAt": "2020-03-26T18:10:14.305Z"
-// };
 
 // GET toy
 function getToy() {
@@ -56,24 +41,31 @@ function getToyTemplate(toy) {
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Contact the seller
       </button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add to My Favorite</button>
+      <button class="btn btn-secondary" type="submit">Add to My Favorite</button>
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Seller's Contact</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <h5 class="text-center">Please login to see the seller contact!</h5>
+        <dl class="row">
+        <dt class="col-sm-3">Name:</dt>
+        <dd class="col-sm-9">${toy.name}</dd>
+        <dt class="col-sm-3">Email:</dt>
+        <dd class="col-sm-9">${toy.ageTag}</dd>
+        <dt class="col-sm-3">Phone:</dt>
+        <dd class="col-sm-9">${toy.genderTag}</dd>
+        <dt class="col-sm-3">Zipcode:</dt>
+        <dd class="col-sm-9">${date.toDateString()}</dd>
+      </dl>
       </div>
-      <div class="modal-footer">
-        <a href='/signup' class="btn btn-primary">Signup</a>
-        <a href='/login' class="btn btn-primary">Login</a>
-      </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>
