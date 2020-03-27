@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Main JS -->
+  <script defer src="/scripts/toysNew.js"></script>
+  <title>Toyslist | New Post</title>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3 mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="/">TOYSLIST</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <form class="form-inline md-form ml-auto mb-1" action="/search" method="post">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" value="" name="search">
+                <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
+            </form>
+            <form id="zipcodeForm" class="form-inline md-form ml-auto mb-1" action="/cookie" method="post">
+              <input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
+                <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>
+            </form>
+            <form class="form-inline md-form ml-auto mb-1">
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+              </li>
+            </form>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section class="container mb-5">
+
+      <form method="post" id="newPost" class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="mb-4">New Post</h2>
+          <div class="form-group">
+            <label for="inputTitle">Title:</label>
+            <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title">
+          </div>
+          <div class="form-group">
+            <label for="inputDescription">Description:</label>
+            <textarea class="form-control" id="inputDescription" rows="3" name="description"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="ageTagInput">Ages:</label>
+              <select class="form-control" id="ageTagInput" name="ageTag">
+                <option>0+</option>
+                <option>1+</option>
+                <option>3+</option>
+                <option>5+</option>
+                <option>10+</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="genderTagInput">Gender bias:</label>
+              <select class="form-control" id="genderTagInput" name="genderTag">
+                <option>All</option>
+                <option>Girls</option>
+                <option>Boys</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="priceInput">Price:</label>
+              <input type="text" class="form-control" id="priceInput" placeholder="$0.00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="imgInput">Images:</label>
+            <input type="text" class="form-control" id="imgInput" placeholder="Links to images" name="images">
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Save</button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-light pt-4 pb-4">
+    <p class="mb-0">Acme Inc.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
