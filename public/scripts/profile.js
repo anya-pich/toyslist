@@ -26,7 +26,7 @@ function getProfileTemplate(profile) {
     console.log(toys);
     return `
         <div id="${profile._id}" class="col-md-8 offset-md-2">
-        <img src="${profile.pic}" class="img-thumbnail rounded-circle mb-3 w-25 float-right"/>
+        <img src="${profile.pic}" class="img-thumbnail rounded-circle mb-3 w-25 float-right">
         <dl class="row">
             <h2 class="m-2">${profile.name}</h2>
         </dl>
@@ -37,6 +37,7 @@ function getProfileTemplate(profile) {
             <dd class="col-sm-9">${profile.phone}</dd>
             <dt class="col-sm-3">Zipcode:</dt>
             <dd class="col-sm-9">${profile.zipcode}</dd>
+            <dd class="col-sm-12"><a href="/profile/${profileId}/edit" class="btn btn-info float-right" type="button">Edit Profile</a></dd>
         </dl>
         <hr class="m-2 mb-5">
         <section>
