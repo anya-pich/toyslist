@@ -18,35 +18,25 @@ function updateForm(existing) {
     document.getElementById('zipcodeInput').value = existing.zipcode;
 };
 
-// console.log(existing.zipcode);
-
-// function updateForm(profile) {
-//     console.log('profile=',profile)
-//     const nameInput = document.getElementById('nameInput');
-//     const emailInput = document.getElementById('emailInput');
-//     const phoneInput = document.getElementById('phoneInput');
-//     const zipcodeInput = document.getElementById('zipcodeInput');
-// }
-
 
 profileForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(postForm);
+    console.log(profileForm);
 
     const name = document.getElementById('nameInput').value;
-    const email = document.getElementById('emailInput').value;
+    // const email = document.getElementById('emailInput').value;
     const phone = document.getElementById('phoneInput').value;
     const zipcode = document.getElementById('zipcodeInput').value;
 
     const updatedPost = {
         name,
-        email,
+        // email,
         phone,
         zipcode,
     };
     // console.log(newPost);
 
-    fetch(`/api/v1/profile/${profileId}/toy/${toyId}`, {
+    fetch(`/api/v1/profile/${profileId}`, {
         // fetch(`/api/v1/profile/${profileId}/toy/${toyId}`, {
         method: 'PUT',
         headers: {
