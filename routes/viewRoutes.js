@@ -76,6 +76,14 @@ router.get('/profile/:id', (req, res) => {
 
 });
 
+router.get('/profile/:id/edit', (req, res) => {
+    
+    res.sendFile('/public/views/profile/profileEdit.html', {
+        root: __dirname + '/../',
+    });
+
+});
+
 router.get('/profile/:profileId/toys/new', (req, res) => {
 
     res.sendFile('/public/views/cards/toysNew.html', {

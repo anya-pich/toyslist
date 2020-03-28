@@ -15,7 +15,6 @@ fetch(`${API_BASE}/profiles`)
 function render(profilesArr) {
   const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
   toys.insertAdjacentHTML('beforeend', toyTemplates);
-  $('.profile').append(`<a href="/profile/:id" class="btn btn-outline-primary btn-rounded btn-md mr-lg-2">my profile</a>`);
 };
 
 function getToyTemplates(profile) {

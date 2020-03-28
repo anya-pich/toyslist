@@ -85,46 +85,21 @@ $(window).on('load',function(){
 });
 
 // log in and go to profile
-
 const loginForm = document.getElementById('loginForm');
-
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const email = document.getElementById('emailInputL').value;
-
-//   fetch(`/api/v1/profiles?email=${email}`, {
-//     method: 'GET'
-//   })
-//     .then((stream) => stream.json())
-//     .then((res) => {
-//       console.log(res);
-//       window.location = `/profile/${res}`;
-//     })
-//     .catch((err) => console.log(err));
-// })
-
-  const userDataS = {
-    email,
-  }
-
-  fetch(`/api/v1`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'credentials': 'include', // This must be included in all API requests until user logs out
-    },
-    body: JSON.stringify(userDataS),
+  const email = document.getElementById('emailInputL').value.split('@').join('%40');
+  console.log(email);
+  fetch(`/api/v1/profiles?email=${email}`, {
+    method: 'GET'
   })
     .then((stream) => stream.json())
     .then((res) => {
-      if (res.status === 200) {
-        window.location = '/profile';
-      } else {
-        console.log(res);
-      }
+      console.log(res);
+      window.location = `/profile/${res}`;
     })
     .catch((err) => console.log(err));
-});
+})
 
 // sign up and go to profile
 
