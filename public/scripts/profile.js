@@ -57,7 +57,7 @@ function getToyTemplates(toys) {
         return `
           <article id="${toy._id}" class="card mb-4">
             <div class="card-body">
-                <img src="${toy.images[0]}" class="img-fluid mb-3" width="100%" />
+                <img src="${toy.images[1]}" class="img-fluid mb-3" width="100%" />
                 <h2>${toy.title}</h2>
                 <p class="mb-5">${toy.description}</p>
                 <dl class="row">

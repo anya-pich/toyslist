@@ -49,7 +49,7 @@ function getToyTemplates(profile) {
     <div id="${toy._id}" class="card h-100">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
-        <h5 class="card-title">${toy.title}</h5>
+        <h5 class="card-title text-truncate">${toy.title}</h5>
         <p class="card-text text-truncate">${toy.description}</p>
         <h6 class="card-subtitle mb-2 text-muted">${toy.price}</h6>
         <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>

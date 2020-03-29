@@ -19,34 +19,47 @@ const index = (req, res) => {
 
 // add an item to the cart for a profile at url/api/v1/profile/profile_id/favs
 const add = (req, res) => {
-    console.log(req.params.profile_id);
-    console.log(req.body);
+
     db.Profile.findById(req.params.profile_id, (err, foundProfile) => {
-        if (err) {
-            return res
-                .status(400)
-                .json({status: 400, error: 'Something went wrong, please try again.'});
-        }
-        // add toy id to profile's cart
-        db.Toy.findById(req.body, (err, foundToy) => {
+        
+        if (!foundProfile) {return res.status(404).json({status: 404, error: 'not found'})} 
+        else if (err) {return res.status(400).json({status: 400, error: 'womp, try again'})}
+        
+        // add toy reference to profile's cart
+        foundProfile.cart.push(req.body.toyId);
+        // save profile
+        foundProfile.save((err, savedProfile) => {
             if (err) {
                 return res
                     .status(400)
                     .json({status: 400, error: 'Something went wrong, please try again.'});
             }
-            // add toy reference to profile's cart
-            foundProfile.cart.push(foundToy);
-            // save profile
-            foundProfile.save((err, savedProfile) => {
-                if (err) {
-                    return res
-                        .status(400)
-                        .json({status: 400, error: 'Something went wrong, please try again.'});
-                }
-                // respond with saved profile's cart objects
-                // let cartObjects = savedProfile.cart.map(toyId => db.Toys.findById(toyId));
-                res.json(savedProfile.populate('cart').cart);
-            });
+            console.log('saved');
+            // respond with saved profile's cart objects
+            // let cartObjects = savedProfile.cart.map(toyId => db.Toys.findById(toyId));
+            res.json(savedProfile.populate('cart').cart);
+
+
+        // // add toy id to profile's cart
+        // db.Toy.findById(req.body.toyId, (err, foundToy) => {
+        //     if (err) {
+        //         return res
+        //             .status(400)
+        //             .json({status: 400, error: 'Something went wrong, please try again.'});
+        //     }
+        //     // add toy reference to profile's cart
+        //     foundProfile.cart.push(foundToy);
+        //     // save profile
+        //     foundProfile.save((err, savedProfile) => {
+        //         if (err) {
+        //             return res
+        //                 .status(400)
+        //                 .json({status: 400, error: 'Something went wrong, please try again.'});
+        //         }
+        //         // respond with saved profile's cart objects
+        //         // let cartObjects = savedProfile.cart.map(toyId => db.Toys.findById(toyId));
+        //         res.json(savedProfile.populate('cart').cart);
+        //     });
         });
     });
 };

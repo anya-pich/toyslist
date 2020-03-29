@@ -5,33 +5,40 @@ const users = [
         name: 'Bob',
         email: 'bob@gmail.com',
         phone: '415-777-7777',
-        zipcode: '94111'
+        zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1563302628-6d8ad9cdbcf5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     },
     {
         name: 'Daphne',
         email: 'daphne@gmail.com',
         phone: '415-666-7777',
-        zipcode: '94111'
+        zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1579034628318-b14c8ab399a9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     },
     {
         name: 'Jo',
         email: 'jo@gmail.com',
         phone: '415-555-7777',
-        zipcode: '94222'
+        zipcode: '94222',
+        pic: 'https://images.unsplash.com/photo-1541112324160-e8a425b58dac?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     },
     {
         name: 'Uneeq',
         email: 'uneeq@gmail.com',
         phone: '415-999-7777',
-        zipcode: '94111'
+        zipcode: '94111',
+        pic: 'https://images.unsplash.com/photo-1559024922-9ade05850615?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     },
     {
         name: 'Hamza',
         email: 'hamza@hotmail.com',
         phone: '415-888-7777',
-        zipcode: '94222'
+        zipcode: '94222',
+        pic: 'https://images.unsplash.com/photo-1555620535-58093c34ea13?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     }
 ];
+
+// https://source.unsplash.com/300x300/?face
 
 const toys = [
     {
