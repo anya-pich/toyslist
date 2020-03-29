@@ -49,7 +49,7 @@ function getToyTemplates(profile) {
     <div id="${toy._id}" class="card h-100 shadow rounded">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
-        <h5 class="card-title">${toy.title}</h5>
+        <h5 class="card-title text-truncate">${toy.title}</h5>
         <p class="card-text text-truncate">${toy.description}</p>
         <h6 class="card-subtitle text-muted">${toy.price}</h6>
       </div>
@@ -103,6 +103,7 @@ loginForm.addEventListener('submit', (event) => {
     .catch((err) => console.log(err));
 })
 
+// sign up and go to profile
 
 // sign up and go to ???
 
@@ -139,6 +140,10 @@ signupForm.addEventListener('submit', (event) => {
     .catch((err) => console.log(err));
 })
 
+$(document).on("click","#switchToLogin",function(){
+  $('#signUpModal').modal('hide');
+  $('#loginModal').modal('show');
+});
 
 
 $(document).on("click","#switchToSignUp",function(){

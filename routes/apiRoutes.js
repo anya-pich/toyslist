@@ -27,17 +27,34 @@ router.delete('/profile/:id', ctrl.profilesCtrl.remove);
 // get all toys from a profile at url/api/v1/profile/profile_id/toys
 router.get('/profile/:profile_id/toys', ctrl.toysCtrl.index);
 
+// get all toys at url/api/v1/toys
+router.get('/toys', ctrl.toysCtrl.index2);
+
 // create new toy listing at url/api/v1/profile/profile_id/toys
 router.post('/profile/:profile_id/toys', ctrl.toysCtrl.create);
 
 // get specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.get('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.show);
 
+// get specific toy at url/api/v1/toy/toy_id
+router.get('/toy/:toy_id', ctrl.toysCtrl.show2);
+
 // update specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 
 // delete specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
+
+// CART
+
+// get all cart contents for a profile at url/api/v1/profile/profile_id/favs
+router.get('/profile/:profile_id/favs', ctrl.favsCtrl.index);
+
+// add an item to the cart for a profile at url/api/v1/profile/profile_id/favs
+router.post('/profile/:profile_id/favs', ctrl.favsCtrl.add);
+
+// delete an item from the cart for a profile at url/api/v1/profile/profile_id/favs
+router.delete('/profile/:profile_id/favs', ctrl.favsCtrl.remove);
 
 // // POST Signup 
 // router.post('/register', ctrl.authCtrl.register);

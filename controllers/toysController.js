@@ -1,7 +1,6 @@
 const db = require('../models');
 
 // get all toys from a profile at url/api/v1/profile/profile_id/toys
-
 const index = (req, res) => {
     db.Profile.findById(req.params.profile_id, (err, foundProfile) => {
         if (err) {
@@ -12,6 +11,18 @@ const index = (req, res) => {
         res.json(foundProfile.toys);
     });
 }; // works
+
+// get all toys
+const index2 = (req, res) => {
+    db.Toy.find({}, (err, allTheToys) => {
+        if (err) {
+            return res
+                .status(400)
+                .json({status: 400, error: 'Something went wrong, please try again.'});
+        }
+        res.json(allTheToys);
+    });
+};
 
 // create new toy listing at url/api/v1/profile/profile_id/toys
 
@@ -59,7 +70,7 @@ const show = (req, res) => {
         const foundToy = foundProfile.toys.id(req.params.toy_id);
 
         if (!foundToy) {
-            res.status(400).json({status: 400, error: 'Could not find item'});
+            res.status(404).json({status: 404, error: 'Could not find item'});
         }
         res.json(foundToy);
     });
@@ -98,7 +109,19 @@ const update = (req, res) => {
             res.send(toyToUpdate);
         });
     });
-}; // overwrites everything and sends back the wrong thing
+};
+
+// get specific toy at url/api/v1/toy/toy_id
+const show2 = (req, res) => {
+    db.Toy.findById(req.params.toy_id, (err, foundToy) => {
+        if(err) {
+            return res
+            .status(400)
+            .json({status: 400, error: 'Something went wrong, please try again.'});
+        }
+        res.json(foundToy);
+    })
+};
 
 // delete specific toy at url/api/v1/profile/profile/toy/toy_id
 
@@ -139,8 +162,10 @@ const remove = (req, res) => {
 
 module.exports = {
     index,
+    index2,
     create,
     show,
+    show2,
     update,
     remove
 };

@@ -38,7 +38,7 @@ function getToyTemplate(toy) {
   const date = new Date(toy.createdAt);
   return `
     <div id="${toy._id}" class="col-md-8 offset-md-2 shadow p-3 mb-5 bg-white rounded">
-      <img src="${toy.images[0]}" class="img-fluid mb-3" width="100%" />
+      <img src="${toy.images[1]}" class="img-fluid mb-3" width="100%" />
       <h2>${toy.title}</h2>
       <p class="mb-5">${toy.description}</p>
       <dl class="row">
