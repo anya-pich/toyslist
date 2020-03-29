@@ -28,7 +28,7 @@ router.get('/signup', (req, res) => {
 
 });
 
-router.get('/main', (req, res) => {
+router.get('/main/:id', (req, res) => {
 
     res.sendFile('/public/views/indexLoggedin.html', {
         root: __dirname + '/../',

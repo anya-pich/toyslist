@@ -16,6 +16,7 @@ function updateForm(existing) {
     document.getElementById('emailInput').value = existing.email;
     document.getElementById('phoneInput').value = existing.phone;
     document.getElementById('zipcodeInput').value = existing.zipcode;
+    document.getElementById('imgInput').value = existing.pic;
 };
 
 
@@ -27,17 +28,19 @@ profileForm.addEventListener('submit', (event) => {
     // const email = document.getElementById('emailInput').value;
     const phone = document.getElementById('phoneInput').value;
     const zipcode = document.getElementById('zipcodeInput').value;
+    const image = document.getElementById('imgInput').value;
+
 
     const updatedPost = {
         name,
         // email,
         phone,
         zipcode,
+        image,
     };
-    // console.log(newPost);
+
 
     fetch(`/api/v1/profile/${profileId}`, {
-        // fetch(`/api/v1/profile/${profileId}/toy/${toyId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -53,3 +56,20 @@ profileForm.addEventListener('submit', (event) => {
           })
         .catch((err) => console.log(err));
 });
+
+
+//home button
+
+const homebtn = document.getElementById('homebtn');
+homebtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetch(`/api/v1/profile/${profileId}`, {
+    method: 'GET'
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      console.log(res);
+      window.location = `/main/${profileId}`;
+    })
+    .catch((err) => console.log(err));
+})

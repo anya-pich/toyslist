@@ -18,44 +18,43 @@
 <body>
 	<header>
 	    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3 mb-5">
-      <div class="container">
-        <a class="navbar-brand" href="/">TOYSLIST</a>
+      		<div class="container">
+        		<a class="navbar-brand" href="/">TOYSLIST</a>
 <!--         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> -->
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ml-auto">
-			<form class="form-inline md-form ml-auto mb-1" action="/search" method="post">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search" value="" name="search">
-		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
-			</form>
-			<form id="zipcodeForm" class="form-inline md-form ml-auto mb-1" action="/cookie" method="post">
-				<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
-		  		<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>
-			</form>
-			<form class="form-inline md-form ml-auto mb-1">
-	            <li class="nav-item">
-	              <a class="nav-link btn" data-toggle="modal" data-target="#signUpModal">Sign up</a>
-				</li>
-	            <li class="nav-item">
-	              <a class="nav-link btn" data-toggle="modal" data-target="#loginModal">Login</a>
-				</li>
-				<!-- <button class="nav-item" type="button" data-toggle="modal" data-target="#loginModal">Log In</button>
-				<button class="nav-item" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button> -->
-        	</form>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+        		<div class="collapse navbar-collapse" id="navbarCollapse">
+          			<ul class="navbar-nav ml-auto">
+						<form class="form-inline md-form ml-auto mb-1" action="/search" method="post">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search" value="" name="search">
+		  				<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
+						</form>
+						<form id="zipcodeForm" class="form-inline md-form ml-auto mb-1" action="/cookie" method="post">
+							<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
+		  					<button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>
+						</form>
+						<form class="form-inline md-form ml-auto mb-1">
+	           	 			<li class="nav-item">
+	              				<a class="nav-link btn" data-toggle="modal" data-target="#signUpModal">Sign up</a>
+							</li>
+	            			<li class="nav-item">
+	              				<a class="nav-link btn" data-toggle="modal" data-target="#loginModal">Login</a>
+							</li>
+							<!-- <button class="nav-item" type="button" data-toggle="modal" data-target="#loginModal">Log In</button>
+							<button class="nav-item" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button> -->
+        				</form>
+          			</ul>
+        		</div>
+      		</div>
+    	</nav>
+  	</header>
 
-  <!-- Main -->
-  <main class="mb-5">
+  	<!-- Main -->
+  	<main class="mb-5">
     <!-- Cities Section -->
-    <section class="container">
-
-      <div id="toys" class="row"></div>
-	</section>
+    	<section class="container">
+      		<div id="toys" class="row"></div>
+		</section>
 
 		<!-- Modal for zipcode -->
 		<div class="modal fade" id="zipcodeModal" tabindex="-1" role="dialog" aria-labelledby="zipcodeModalLabel" aria-hidden="true">
@@ -183,51 +182,52 @@
 				</div>
 			</div>
 		</div>
-	</main> -->
-
+	 -->
     <!-- Modal for sign up -->
-      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header p-3">
-            <h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body p-3">
-            <form action="/profile" method="get" id="signupForm">
+      	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+      		<div class="modal-dialog modal-dialog-centered" role="document">
+        		<div class="modal-content">
+          			<div class="modal-header p-3">
+            			<h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
+            			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              				<span aria-hidden="true">&times;</span>
+            			</button>
+          			</div>
+          			<div class="modal-body p-3">
+            			<form action="/profile" method="get" id="signupForm">
+		              		<div class="form-group">
+		                		<label for="nameInput">Name</label>
+		                		<input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name" name="name">
+		              		</div>
 
-              <div class="form-group">
-                <label for="nameInput">Name</label>
-                <input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name" name="name">
-              </div>
+		              		<div class="form-group">
+		                		<label for="phoneInput">Phone</label>
+		                		<input type="phone" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
+		              		</div>
 
-              <div class="form-group">
-                <label for="phoneInput">Phone</label>
-                <input type="phone" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
-              </div>
+		              		<div class="form-group">
+		                		<label for="zipcodeInput">Zipcode</label>
+		                		<input type="zipcode" class="form-control" id="zipcodeInput" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
+		              		</div>
 
-              <div class="form-group">
-                <label for="zipcodeInput">Zipcode</label>
-                <input type="zipcode" class="form-control" id="zipcodeInput" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
-              </div>
+		              		<div class="form-group">
+		                		<label for="emailInputS">Email address</label>
+		                		<input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+		                		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		              		</div>
 
-              <div class="form-group">
-                <label for="emailInputS">Email address</label>
-                <input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-
-              <button type="submit" class="btn btn-primary float-right" id="signupButton">Sign up</button>
-            </form>
-          </div>
-          <div class="modal-footer p-3 text-muted">
-            Already registered? <a class="link btn" data-toggle="modal" data-target="#loginModal" id="switchToLogin"><u>go to login</u></a>
-          </div>
-        </div>
-      </div>
-    </div>
+		              		<button type="submit" class="btn btn-primary float-right" id="signupButton">Sign up</button>
+            			</form>
+          			</div>
+          			<div class="modal-footer p-3 text-muted">Already registered?
+          				<a class="link btn" data-toggle="modal" data-target="#loginModal" id="switchToLogin">
+          					<u>go to login</u>
+          				</a>
+          			</div>
+        		</div>
+      		</div>
+    	</div>
+    </main>
 
 
 	<!-- AJAX JS -->
@@ -237,6 +237,7 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </body>
 
