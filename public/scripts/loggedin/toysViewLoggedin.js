@@ -13,7 +13,8 @@ function getToy() {
 
 getToy();
 
-$('.profile').append(`<a href="/profile" class="btn btn-outline-primary">my profile</a>`);
+// $('.profile').append(`<a href="/profile" class="btn btn-outline-primary">my profile</a>`);
+$('.profile').append(`<a href="../../../profile/${profileId}" class="btn btn-outline-primary btn-rounded btn-md mr-lg-5">my profile</a>`);
 
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
@@ -24,7 +25,7 @@ function render(toyObj) {
 function getToyTemplate(toy) {
   const date = new Date(toy.createdAt);
   return `
-    <div id="${toy._id}" class="col-md-8 offset-md-2">
+    <div id="${toy._id}" class="col-md-8 offset-md-2 shadow p-3 mb-5 bg-white rounded">
       <img src="${toy.images[0]}" class="img-fluid mb-3" width="100%" />
       <h2>${toy.title}</h2>
       <p class="mb-5">${toy.description}</p>
@@ -80,4 +81,21 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+//home button
+
+const homebtn = document.getElementById('homebtn');
+homebtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetch(`/api/v1/profile/${profileId}`, {
+    method: 'GET'
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      console.log(res);
+      window.location = `/main/${profileId}`;
+    })
+    .catch((err) => console.log(err));
+})
 

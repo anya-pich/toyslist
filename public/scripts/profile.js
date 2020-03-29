@@ -26,20 +26,22 @@ function getProfileTemplate(profile) {
     console.log(toys);
     return `
         <div id="${profile._id}" class="col-md-8 offset-md-2">
-        <img src="${profile.pic}" class="img-thumbnail rounded-circle mb-3 w-25 float-right">
-        <dl class="row">
-            <h2 class="m-2">${profile.name}</h2>
-        </dl>
-        <dl class="row">
-            <dt class="col-sm-3">Email:</dt>
-            <dd class="col-sm-9">${profile.email}</dd>
-            <dt class="col-sm-3">Tel:</dt>
-            <dd class="col-sm-9">${profile.phone}</dd>
-            <dt class="col-sm-3">Zipcode:</dt>
-            <dd class="col-sm-9">${profile.zipcode}</dd>
-            <dd class="col-sm-12"><a href="/profile/${profileId}/edit" class="btn btn-info float-right" type="button">Edit Profile</a></dd>
-        </dl>
-        <hr class="m-2 mb-5">
+        <div class="clearfix">
+            <img src="${profile.pic}" class="img-thumbnail rounded-circle mb-3 w-25 float-right">
+            <dl class="row">
+                <h2 class="m-2">${profile.name}</h2>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">${profile.email}</dd>
+                <dt class="col-sm-3">Tel:</dt>
+                <dd class="col-sm-9">${profile.phone}</dd>
+                <dt class="col-sm-3">Zipcode:</dt>
+                <dd class="col-sm-9">${profile.zipcode}</dd>
+            </dl>
+        </div>
+        <a href="/profile/${profileId}/edit" class="btn btn-info float-right" type="button">Edit Profile</a>
+        <hr class="m-2 mb-5 mt-5">
         <section>
             <a href="/profile/${profile._id}/toys/new" class="btn btn-primary float-right mb-3">
                 New post
@@ -101,4 +103,22 @@ function deletePost(event) {
         .catch((err) => console.log(err));
 
 } //works
+
+//home button
+
+const homebtn = document.getElementById('homebtn');
+homebtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetch(`/api/v1/profile/${profileId}`, {
+    method: 'GET'
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      console.log(res);
+      window.location = `/main/${profileId}`;
+    })
+    .catch((err) => console.log(err));
+})
+
+
 

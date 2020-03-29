@@ -28,8 +28,6 @@ function getToy() {
 
 getToy();
 
-$('.profile').append(`<a href="/profile">my profile</a>`);
-
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
   toy.innerHTML = '';
@@ -39,7 +37,7 @@ function render(toyObj) {
 function getToyTemplate(toy) {
   const date = new Date(toy.createdAt);
   return `
-    <div id="${toy._id}" class="col-md-8 offset-md-2">
+    <div id="${toy._id}" class="col-md-8 offset-md-2 shadow p-3 mb-5 bg-white rounded">
       <img src="${toy.images[0]}" class="img-fluid mb-3" width="100%" />
       <h2>${toy.title}</h2>
       <p class="mb-5">${toy.description}</p>
@@ -71,8 +69,13 @@ function getToyTemplate(toy) {
       <h5 class="text-center">Please login to enjoy the feature!</h5>
       </div>
       <div class="modal-footer">
-        <a href='/signup' class="btn btn-primary">Signup</a>
-        <a href='/login' class="btn btn-primary">Login</a>
+        <form class="form-inline md-form ml-auto mb-1">
+          
+            <button type="button" class="nav-link btn btn-primary mr-2" data-toggle="modal" data-target="#signUpModal" id="jumpToSignUp">Sign up</a>
+          
+            <button type="button" class="nav-link btn btn-primary mr-2" data-toggle="modal" data-target="#loginModal" id="jumpToLogin">Login</a>
+          
+        </form>
       </div>
     </div>
   </div>
@@ -89,7 +92,77 @@ window.onclick = function(event) {
     }
 }
 
-      // <section>
-      //   <h4 class="mb-4">${toy.posts.length ? 'Posts:' : ''}</h4>
-      //   ${getPostTemplates(toy.posts)}
-      // </section>
+// log in and go to main page
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.getElementById('emailInputL').value.split('@').join('%40');
+  console.log(email);
+  fetch(`/api/v1/profiles?email=${email}`, {
+    method: 'GET'
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      console.log(res);
+      window.location = `/main/${res}`;
+    })
+    .catch((err) => console.log(err));
+})
+
+
+// sign up and go to ???
+
+const signupForm = document.getElementById('signupForm');
+
+signupForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = document.getElementById('nameInput').value;
+  const email = document.getElementById('emailInputS').value;
+  const phone = document.getElementById('phoneInput').value;
+  const zipcode = document.getElementById('zipcodeInput').value;
+
+  const userDataS = {
+    name,
+    email,
+    phone,
+    zipcode,
+  };
+
+  fetch(`/api/v1/profiles?email=${email}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      if (res.status === 201) {
+        window.location = '/login';
+      } else {
+      window.location = `/profile/${res}`;      }
+    })
+    .catch((err) => console.log(err));
+})
+
+
+
+$(document).on("click","#switchToSignUp",function(){
+  $('#loginModal').modal('hide');
+  $('#signUpModal').modal('show');
+});
+
+$(document).on("click","#switchToLogin",function(){
+  $('#signUpModal').modal('hide');
+  $('#loginModal').modal('show');
+});
+
+$(document).on("click","#jumpToSignUp",function(){
+  $('#exampleModal').modal('hide');
+  $('#signUpModal').modal('show');
+});
+
+$(document).on("click","#jumpToLogin",function(){
+  $('#exampleModal').modal('hide');
+  $('#loginModal').modal('show');
+});
