@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Toy = require('./Toy');
+const ToySchema = require('./Toy')
 
 //Profile Schema//
 const ProfileSchema = new mongoose.Schema({
@@ -8,7 +9,11 @@ const ProfileSchema = new mongoose.Schema({
     phone: String,
     zipcode: Number,
     pic: String,
-    toys: [Toy.schema]
+    toys: [Toy.schema],
+    cart: [{
+        type: mongoose.ObjectId,
+        ref: 'Toy'
+    }]
 });
 
 //Profile Model//

@@ -39,6 +39,17 @@ router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 // delete specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
 
+// CART
+
+// get all cart contents for a profile at url/api/v1/profile/profile_id/favs
+router.get('/profile/:profile_id/favs', ctrl.favsCtrl.index);
+
+// add an item to the cart for a profile at url/api/v1/profile/profile_id/favs
+router.post('/profile/:profile_id/favs', ctrl.favsCtrl.add);
+
+// delete an item from the cart for a profile at url/api/v1/profile/profile_id/favs
+router.delete('/profile/:profile_id/favs', ctrl.favsCtrl.remove);
+
 // // POST Signup 
 // router.post('/register', ctrl.authCtrl.register);
 
