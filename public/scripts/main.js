@@ -46,13 +46,15 @@ function render(profilesArr) {
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
   `<div class="col-md-3 mb-4">
-    <div id="${toy._id}" class="card h-100">
+    <div id="${toy._id}" class="card h-100 shadow rounded">
       <img src="${toy.images[0]}" class="card-img-top" alt="${toy.title}" />
       <div class="card-body">
         <h5 class="card-title">${toy.title}</h5>
         <p class="card-text text-truncate">${toy.description}</p>
-        <h6 class="card-subtitle mb-2 text-muted">${toy.price}</h6>
-        <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary float-right">View</a>
+        <h6 class="card-subtitle text-muted">${toy.price}</h6>
+      </div>
+      <div>
+        <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary mr-4 mb-3 float-right">View</a>
       </div>
       <div class="card-footer text-center">
         <small class="text-muted">Posted by ${profile.name}</small>
@@ -84,7 +86,7 @@ $(window).on('load',function(){
   }
 });
 
-// log in and go to profile
+// log in and go to main page
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -96,13 +98,13 @@ loginForm.addEventListener('submit', (event) => {
     .then((stream) => stream.json())
     .then((res) => {
       console.log(res);
-      window.location = `/profile/${res}`;
+      window.location = `/main/${res}`;
     })
     .catch((err) => console.log(err));
 })
 
 
-// sign up and go to profile
+// sign up and go to ???
 
 const signupForm = document.getElementById('signupForm');
 

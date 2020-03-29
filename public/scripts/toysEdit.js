@@ -57,3 +57,21 @@ postForm.addEventListener('submit', (event) => {
           })
         .catch((err) => console.log(err));
 });
+
+//home button
+
+const homebtn = document.getElementById('homebtn');
+homebtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetch(`/api/v1/profile/${profileId}`, {
+    method: 'GET'
+  })
+    .then((stream) => stream.json())
+    .then((res) => {
+      console.log(res);
+      window.location = `/main/${profileId}`;
+    })
+    .catch((err) => console.log(err));
+})
+
+

@@ -12,7 +12,6 @@
 
     <!-- Main JS -->
 
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>  
     <script defer src="/scripts/toysView.js"></script>
 
   <title>Toyslist</title>
@@ -27,21 +26,23 @@
         </button> -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
-            <form class="form-inline md-form ml-auto mb-1">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" value="">
+      <form class="form-inline md-form ml-auto mb-1" action="/search" method="post">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" value="" name="search">
           <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Search</button>
-
-          <input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="">
-          <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit">Enter</button>
-<!--          <button class="btn btn-outline-primary btn-rounded btn-md my-5" type="submit">Enter Zipcode</button> -->
-
+      </form>
+      <form id="zipcodeForm" class="form-inline md-form ml-auto mb-1" action="/cookie" method="post">
+        <input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
+          <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>
+      </form>
+      <form class="form-inline md-form ml-auto mb-1">
               <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign up</a>
-              </li>
-
+                <a class="nav-link btn" data-toggle="modal" data-target="#signUpModal">Sign up</a>
+        </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
+                <a class="nav-link btn" data-toggle="modal" data-target="#loginModal">Login</a>
+        </li>
+        <!-- <button class="nav-item" type="button" data-toggle="modal" data-target="#loginModal">Log In</button>
+        <button class="nav-item" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button> -->
           </form>
           </ul>
         </div>
@@ -57,6 +58,109 @@
     </section>
   </main>
 
+<!-- Modal for login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header p-3">
+            <h5 class="modal-title" id="loginModalLabel">Log in</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-3">
+            <form action="/profile" method="get" id="loginForm">
+              <div class="form-group">
+                <label for="emailInputL">Email address</label>
+                <input type="email" class="form-control" id="emailInputL" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+<!--              <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+              </div> -->
+<!--              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me on this computer</label>
+              </div> -->
+              <button type="submit" class="btn btn-primary float-right" id="loginButton">Login</button>
+            </form>
+          </div>
+          <div class="modal-footer p-3 text-muted">
+            Or create a <a class="link btn" data-toggle="modal" data-target="#signUpModal" id="switchToSignUp"><u>new account</u></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for sign up -->
+<!--    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="zipcodeModalLabel">Welcome!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/cookie" method="post" id="SignupForm">
+            <div class="modal-body">
+              <label for="zipcode" class="col-form-label">See listings in your zipcode:</label>
+              <input type="text" class="form-control" id="zipcodeInput" name="zipcode">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main> -->
+
+    <!-- Modal for sign up -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header p-3">
+            <h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-3">
+            <form action="/profile" method="get" id="signupForm">
+
+              <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name" name="name">
+              </div>
+
+              <div class="form-group">
+                <label for="phoneInput">Phone</label>
+                <input type="phone" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="zipcodeInput">Zipcode</label>
+                <input type="zipcode" class="form-control" id="zipcodeInput" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
+              </div>
+
+              <div class="form-group">
+                <label for="emailInputS">Email address</label>
+                <input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+
+              <button type="submit" class="btn btn-primary float-right" id="signupButton">Sign up</button>
+            </form>
+          </div>
+          <div class="modal-footer p-3 text-muted">
+            Already registered? <a class="link btn" data-toggle="modal" data-target="#loginModal" id="switchToLogin"><u>go to login</u></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
