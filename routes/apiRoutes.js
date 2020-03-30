@@ -56,13 +56,19 @@ router.post('/profile/:profile_id/favs', ctrl.favsCtrl.add);
 // delete an item from the cart for a profile at url/api/v1/profile/profile_id/favs
 router.delete('/profile/:profile_id/favs', ctrl.favsCtrl.remove);
 
-// // POST Signup 
-// router.post('/register', ctrl.authCtrl.register);
+// ----------------- AUTH
 
-// // POST Login
-// router.post('/login', ctrl.authCtrl.login);
 
-// // DELETE Logout
-// router.delete('/logout', ctrl.authCtrl.logout);
+router.post('/register', ctrl.authCtrl.register);
+
+
+router.post('/login', ctrl.authCtrl.login);
+
+
+router.delete('/logout', ctrl.authCtrl.logout);
+
+
+router.get('/verify', ctrl.authCtrl.verify);
+
 
 module.exports = router;

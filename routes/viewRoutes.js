@@ -44,6 +44,8 @@ router.get('/main/:id', (req, res) => {
 
 // });
 
+
+
 router.get('/profile/:id/toy/:id', (req, res) => {
 
     res.sendFile('/public/views/cards/toysView.html', {
@@ -52,7 +54,7 @@ router.get('/profile/:id/toy/:id', (req, res) => {
 
 });
 
-router.get('/toysLoggedin/:id/toy/:id', (req, res) => {
+router.get('/main/:id/toysLoggedin/:id/toy/:id', (req, res) => {
 
     res.sendFile('/public/views/cards/loggedin/toysViewLoggedin.html', {
         root: __dirname + '/../',
@@ -60,7 +62,7 @@ router.get('/toysLoggedin/:id/toy/:id', (req, res) => {
 
 });
 
-router.get('/favorite', (req, res) => {
+router.get('/main/:id/favorite', (req, res) => {
 
     res.sendFile('/public/views/favorite/favorite.html', {
         root: __dirname + '/../',
@@ -68,15 +70,23 @@ router.get('/favorite', (req, res) => {
 
 });
 
-router.get('/profile/:id', (req, res) => {
-    
+router.get('/main/:id/profile/:id', (req, res) => {
+
     res.sendFile('/public/views/profile/profile.html', {
         root: __dirname + '/../',
     });
 
 });
 
-router.get('/profile/:id/edit', (req, res) => {
+// router.get('/profile/:id', (req, res) => {
+    
+//     res.sendFile('/public/views/profile/profile.html', {
+//         root: __dirname + '/../',
+//     });
+
+// });
+
+router.get('/main/:id/profile/:id/edit', (req, res) => {
     
     res.sendFile('/public/views/profile/profileEdit.html', {
         root: __dirname + '/../',
@@ -84,7 +94,7 @@ router.get('/profile/:id/edit', (req, res) => {
 
 });
 
-router.get('/profile/:profileId/toys/new', (req, res) => {
+router.get('/main/:profileId/profile/:profileId/toys/new', (req, res) => {
 
     res.sendFile('/public/views/cards/toysNew.html', {
         root: __dirname + '/../',

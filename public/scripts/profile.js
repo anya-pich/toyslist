@@ -4,6 +4,15 @@ const profile = document.getElementById('profile');
 const profileId = window.location.pathname.split('/')[2];
 console.log('profile Id = ', profileId);
 
+// Add favorite button
+$('.favorite').append(
+`<a href="/main/${profileId}/favorite">
+  <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+  </svg>
+</a>`
+);
+
 // get profile info from api
 function buildProfile() {
     fetch(`${API_BASE}/profile/${profileId}`)
@@ -40,10 +49,10 @@ function getProfileTemplate(profile) {
                 <dd class="col-sm-9">${profile.zipcode}</dd>
             </dl>
         </div>
-        <a href="/profile/${profileId}/edit" class="btn btn-info float-right" type="button">Edit Profile</a>
+        <a href="/main/${profileId}/profile/${profileId}/edit" class="btn btn-info float-right" type="button">Edit Profile</a>
         <hr class="m-2 mb-5 mt-5">
         <section>
-            <a href="/profile/${profile._id}/toys/new" class="btn btn-primary float-right mb-3">
+            <a href="/main/${profileId}/profile/${profile._id}/toys/new" class="btn btn-primary float-right mb-3">
                 New post
             </a>
             <h4 class="m-2 mb-5">${toys.length ? 'Posts:' : ''}</h4>

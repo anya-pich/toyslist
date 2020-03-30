@@ -96,23 +96,23 @@
 
               <div class="form-group">
                 <label for="nameInput">Name</label>
-                <input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name" name="name">
+                <input type="name" class="form-control" id="nameInputS" aria-describedby="nameHelp" placeholder="Enter name" name="name">
+              </div>
+
+			  <div class="form-group">
+                <label for="emailInputS">Email address</label>
+                <input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
 
               <div class="form-group">
                 <label for="phoneInput">Phone</label>
-                <input type="phone" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
+                <input type="phone" class="form-control" id="phoneInputS" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
               </div>
 
               <div class="form-group">
                 <label for="zipcodeInput">Zipcode</label>
-                <input type="zipcode" class="form-control" id="zipcodeInput" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
-              </div>
-
-              <div class="form-group">
-                <label for="emailInputS">Email address</label>
-                <input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="zipcode" class="form-control" id="zipcodeInputS" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
               </div>
 
               <button type="submit" class="btn btn-primary float-right" id="signupButton">Sign up</button>
@@ -124,6 +124,7 @@
         </div>
       </div>
     </div>
+
 		<!-- Modal for login -->
 		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
@@ -183,51 +184,7 @@
 			</div>
 		</div>
 	 -->
-    <!-- Modal for sign up -->
-      	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-      		<div class="modal-dialog modal-dialog-centered" role="document">
-        		<div class="modal-content">
-          			<div class="modal-header p-3">
-            			<h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
-            			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              				<span aria-hidden="true">&times;</span>
-            			</button>
-          			</div>
-          			<div class="modal-body p-3">
-            			<form action="/profile" method="get" id="signupForm">
-		              		<div class="form-group">
-		                		<label for="nameInput">Name</label>
-		                		<input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name" name="name">
-		              		</div>
 
-		              		<div class="form-group">
-		                		<label for="phoneInput">Phone</label>
-		                		<input type="phone" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Enter phone" name="phone">
-		              		</div>
-
-		              		<div class="form-group">
-		                		<label for="zipcodeInput">Zipcode</label>
-		                		<input type="zipcode" class="form-control" id="zipcodeInput" aria-describedby="zipcodeHelp" placeholder="Enter zipcode" name="zipcode">
-		              		</div>
-
-		              		<div class="form-group">
-		                		<label for="emailInputS">Email address</label>
-		                		<input type="email" class="form-control" id="emailInputS" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-		                		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-		              		</div>
-
-		              		<button type="submit" class="btn btn-primary float-right" id="signupButton">Sign up</button>
-            			</form>
-          			</div>
-          			<div class="modal-footer p-3 text-muted">Already registered?
-          				<a class="link btn" data-toggle="modal" data-target="#loginModal" id="switchToLogin">
-          					<u>go to login</u>
-          				</a>
-          			</div>
-        		</div>
-      		</div>
-    	</div>
-    </main>
 
 
 	<!-- AJAX JS -->

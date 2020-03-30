@@ -1,6 +1,7 @@
 
 const API_BASE = '/api/v1';
 const toys = document.getElementById('toys');
+// const profileId = window.location.pathname.split('/')[2];
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,7 +87,37 @@ $(window).on('load',function(){
   }
 });
 
-// log in and go to main page
+// // log in and go to main page
+// const loginForm = document.getElementById('loginForm');
+// loginForm.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const email = document.getElementById('emailInputL').value.split('@').join('%40');
+//   // console.log(email);
+//   const userDataL = {
+//     email,
+//   };
+//     // console.log(JSON.stringify(userDataL));
+
+//   fetch('/api/v1/login', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'credentials': 'include', // This must be included in all API requests until user logs out
+//     },
+//     body: JSON.stringify(userDataL),
+//   })
+//     .then((stream) => stream.json())
+//     .then((res) => {
+//       if (res.status === 200) {
+//         window.location = `/`;
+//       } else {
+//         console.log(res);
+//       }
+//     })
+//     .catch((err) => console.log(err));
+
+//////////////////////////////////////
+//   // log in and go to main page
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -103,18 +134,18 @@ loginForm.addEventListener('submit', (event) => {
     .catch((err) => console.log(err));
 })
 
+////////////////////////////////////////
+
+
 // sign up and go to profile
-
-// sign up and go to ???
-
 const signupForm = document.getElementById('signupForm');
 
 signupForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const name = document.getElementById('nameInput').value;
+  const name = document.getElementById('nameInputS').value;
   const email = document.getElementById('emailInputS').value;
-  const phone = document.getElementById('phoneInput').value;
-  const zipcode = document.getElementById('zipcodeInput').value;
+  const phone = document.getElementById('phoneInputS').value;
+  const zipcode = document.getElementById('zipcodeInputS').value;
 
   const userDataS = {
     name,
@@ -123,28 +154,35 @@ signupForm.addEventListener('submit', (event) => {
     zipcode,
   };
 
-  fetch(`/api/v1/profiles?email=${email}`, {
+  console.log(JSON.stringify(userDataS));
+
+  fetch(`/api/v1/profiles`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(userDataS),
   })
     .then((stream) => stream.json())
     .then((res) => {
-      if (res.status === 201) {
-        window.location = '/login';
-      } else {
-      window.location = `/profile/${res}`;      }
+      // console.log(res._id);
+      // if (res.status === 201) {
+      // window.location = '/profile';
+      // } else {
+      window.location = `/main/${res._id}/profile/${res._id}`;      
+    // }
     })
     .catch((err) => console.log(err));
 })
 
+
+
+
+// switch between modal
 $(document).on("click","#switchToLogin",function(){
   $('#signUpModal').modal('hide');
   $('#loginModal').modal('show');
 });
-
 
 $(document).on("click","#switchToSignUp",function(){
   $('#loginModal').modal('hide');
@@ -157,159 +195,6 @@ $(document).on("click","#switchToLogin",function(){
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-// fetch(`/profile/${id}`)df
-
-// // go to profile
-// // router.get('/profiles', (req, res) => {
-
-//   // get button
-//   // prevent default
-//   // get the email and send it to the api to get id number
-//   // then go to link
-//   const email = (req.query.email).split('@').join('%40');
-//   let profileId = '';
-//   fetch(`/api/v1/profiles?email=${email}`)
-//       .then(console.log('something is happening'))
-//       .then((stream) => stream.json())
-//       .then(profileId = res)
-//       .catch((err) => console.log(err));
-//   // res.redirect(`/profile/${profileId}`);
-//   res.send(profileId);
-//   // res.sendFile('/public/views/profile/profile.html', {
-//   //     root: __dirname + '/../',
-//   // });
-//   // res.send(req.query.email);
-// });
-
-
-
-
-
-
-
-
-
-
-// function render(toysArray) {
-//   const toyTemplates = toysArray.map((toy) => getToyTemplate(toy)).join('');
-//   toys.insertAdjacentHTML('beforeend', toyTemplates);
-// }
-
-// function getToyTemplate(json) {
-// // for(let i in user.toys) {
-// // 	console.log(i);
-// let toysAll = [];
-// console.log(json.toys);
-// for (let i=0;i<json.length;i++){
-// toysAll.push(json[i].toys);
-// console.log(toysAll);};
-// // for(let i=0; i<toysAll.length; i++) {
-//   return `
-//     <div class="col-md-4 mb-4">
-//       <div id="${json.toys[0]._id}" class="card">
-//         <img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
-//         <div class="card-body">
-//           <h5>${json.toys[0].title}</h5>
-//           <p class="card-text">${json.toys[0].description}</p>
-//           <a href="/toys/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
-//         </div>
-//       </div>
-//     </div>
-//   `;
-// };
-// }
-
-
-
-//////////////////////////////////////////////
-// $('form-inline').on('submit',function(e){
-// 	e.preventDefault();
-// 	$.ajax ({
-// 		method: 'GET',
-// 		url:'http://api/v1/profile'
-// 		success: onSuccess,
-// 		error: onError,
-// 	});
-
-// 	function onSuccess (json) {
-// 	$users.empty();
-// 		for (let i=0; i<json.fakePeople.length; i++) {
-// 			$users.append('json.fakePeople.name');
-// 	};
-// function onError () {
-// 	console.log('err');
-// 	};
-// };
-// });
-
-
-// const $toysList = $('#toys');
-// const allToys = [];
-
-// $.ajax ({
-// 	method: 'GET',
-// 	url:'/api/v1/profiles',
-// 	success: onSuccess,
-// 	error: onError,
-// 	});
-
-// 	function getToyHtml(json) {
-// 		console.log("get a toy");
-// 		return `
-// 		    <div class="col-md-4 mb-4">
-// 	      		<div id="${json.toys[0]._id}" class="card">
-// 	        		<img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
-// 	        		<div class="card-body">
-// 	          			<h5>${json.toys[0].title}</h5>
-// 	          			<p class="card-text">${json.toys[0].description}</p>
-// 	          			<a href="/profiles/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
-// 	        		</div>
-// 	      		</div>
-// 	    	</div>
-// 	  	`;
-// 	};
-
-// 	function getAllToysHtml(toys) {
-// 		return toys.map(getToyHtml).join('');
-// 	};
-
-// 	function render () {
-// 		$toysList.empty();
-// 		let toysHtml = getAllToysHtml(allToys);
-// 		$toysList.append(toysHtml);
-// 	};
-
-// 	function onSuccess (json) {
-// 		console.log("ok");
-// 		allToys = json;
-// 		render();
-// 	};
-
-
-// 	function onError(json) {
-// 		console.log("Error");
-// 	};
 
 
 

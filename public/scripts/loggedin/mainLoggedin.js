@@ -35,6 +35,18 @@ const setZip2 = (zipcode) => {
 //   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 // }
 
+// Add favorite button
+$('.favorite').append(
+`<a href="/main/${profileId}/favorite">
+  <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+  </svg>
+</a>`
+);
+
+// Add my profile button
+$('.profile').append(`<a href="../main/${profileId}/profile/${profileId}" class="btn btn-outline-primary btn-rounded btn-md mr-lg-5">my profile</a>`);
+
 // render toys to html
 function render(profilesArr) {
   // console.log(profilesArr);
@@ -57,7 +69,7 @@ function getToyTemplates(profile) {
         <h6 class="card-subtitle text-muted">${toy.price}</h6>
       </div>
       <div>
-        <a href="/toysLoggedin/${profile._id}/toy/${toy._id}" class="btn btn-primary mr-4 mb-3 float-right">View</a>
+        <a href="/main/${profileId}/toysLoggedin/${profile._id}/toy/${toy._id}" class="btn btn-primary mr-3 mb-2 float-right">View</a>
       </div>
       <div class="card-footer text-center">
         <small class="text-muted">Posted by ${profile.name}</small>
@@ -91,7 +103,6 @@ $(window).on('load',function(){
 
 
 //home button
-
 const homebtn = document.getElementById('homebtn');
 homebtn.addEventListener('click', (event) => {
   event.preventDefault();
