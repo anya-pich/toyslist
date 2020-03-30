@@ -6,7 +6,7 @@ const users = [
         email: 'bob@gmail.com',
         phone: '415-777-7777',
         zipcode: '94111',
-        pic: 'https://https://images.unsplash.com/photo-1545231584-45aac96e37d7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
+        pic: 'https://images.unsplash.com/photo-1545231584-45aac96e37d7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300'
     },
     {
         name: 'Daphne',
