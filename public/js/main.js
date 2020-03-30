@@ -1,8 +1,9 @@
 
 const API_BASE = '/api/v1';
 // const nav = require('./navbar.js');
-const toys = document.getElementById('toys');
+let toys = document.getElementById('toys');
 let zipcode = localStorage.getItem('zipcode');
+let profile = localStorage.getItem('profile');
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,16 +17,7 @@ let zipcode = localStorage.getItem('zipcode');
 // zipcode
 
 const zipRender = (value) => {
-  console.log('rendering zip');
-  document.getElementById('zipcodeForm').innerHTML = 
-  `<button class="btn btn-outline-secondary btn-rounded btn-md mr-lg-5" type="submit" id="zipX">${value}  x</button>`;
-}
-
-const zipUnset = () => {
-  document.getElementById('zipcodeForm').innerHTML = 
-    `<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
-    <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>`
-  localStorage.removeItem('zipcode');
+  document.getElementById('zipInput').setAttribute('value', value);
 }
 
 // load toy cards
@@ -47,9 +39,28 @@ const toysByZipcode = (value) => {
 }
 
 const toysBySearch = (value) => {
-  fetch(`${API_BASE}/toys?q=${value}`) // set this up
+  fetch(`${API_BASE}/toys?q=${value}`)
     .then((stream) => stream.json())
     .then(res => render(res))
+    .catch((err) => console.log(err));
+}
+
+// logged in nav
+
+const loggedIn = () => {
+  document.getElementById('signupNav').classList.add('d-none');
+  document.getElementById('loginNav').classList.add('d-none');
+  document.getElementById('navRight')
+    .insertAdjacentHTML('afterbegin', `<a class="nav-link" href="/profile/${profile}" id="profileLink">Profile</a><a class="nav-link" id="logOut">Log Out</a>`)
+} 
+
+// go to saved items cart / favorites
+
+const showCart = () => {
+  toys.innerHTML = '';
+  fetch(`${API_BASE}/profile/${profile}/favs`)
+    .then((stream) => stream.json())
+    .then(res => renderCart(res))
     .catch((err) => console.log(err));
 }
 
@@ -65,6 +76,9 @@ if (zipcode) {
   toysAll();
 }
 
+if (profile) {
+  loggedIn();
+}
 
 // on load
 
@@ -105,16 +119,22 @@ document.addEventListener('DOMContentLoaded', function(){
         $('#signUpModal').modal('show');
         break;
 
-      case 'profileButton':
-        profileGo();
+      case 'profileLink':
+        window.location = event.target.href;
         break;
 
       case 'logOut':
         localStorage.removeItem('profile');
+        location.reload();
         break;
 
       case 'cartButton':
-
+        console.log('clicked cart button');
+        if (profile) {
+          showCart();
+        } else {
+          $('#loginModal').modal('show');
+        } 
         break;
 
       case 'ageSelector':
@@ -126,6 +146,10 @@ document.addEventListener('DOMContentLoaded', function(){
         break;
     }
   })
+
+  // body controls
+
+
 
   // modal listeners
 
@@ -145,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function(){
     event.preventDefault();
     let input = document.getElementById('zipcodeInput').value;
     zipRender(input);
+    localStorage.setItem('zipcode', input);
     toysByZipcode(input);
     $('#zipcodeModal').modal('hide');
   })
@@ -158,12 +183,59 @@ document.addEventListener('DOMContentLoaded', function(){
     })
       .then((stream) => stream.json())
       .then((res) => {
-        console.log(res);
-        localStorage.setItem('profile', res);
-        window.location = `/profile/${res}`;
+        localStorage.setItem('profile', res._id);
+        console.log(localStorage.getItem('profile'));
+        $('#loginModal').modal('hide');
+        loggedIn();
       })
       .catch((err) => console.log(err));
   })
+
+  // add item to user cart
+  toys.addEventListener('click', (event) => {
+    if (event.target.classList.contains('add') && (profile)) {
+      console.log('ready to send');
+      fetch(`${API_BASE}/profile/${profile}/favs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({toyId: event.target.id}),
+      })
+        .then((stream) => stream.json())
+        .then((res) => {
+          if (res.status === 201) {
+            event.target.innerText = "Added";
+          }
+          console.log(res[0].title);
+        })
+        .catch((err) => console.log(err));
+    } else if (event.target.classList.contains('add')) {
+      $('#loginModal').modal('show');
+    }
+  });
+
+  // unfollow item
+  toys.addEventListener('click', (event) => {
+    if (event.target.classList.contains('unwatchButton')) {
+      fetch(`${API_BASE}/profile/${profile}/favs`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({toyId: event.target.id}),
+      })
+        .then((stream) => stream.json())
+        .then((res) => {
+          renderCart(res);
+        })
+        .catch((err) => console.log(err));
+      
+    } else if (event.target.classList.contains('contactButton')) {
+      console.log('foo');
+    }
+  })
+
 
   // sign up
   document.getElementById('signupForm').addEventListener('submit', (event) => {
@@ -212,6 +284,44 @@ const render = (profilesArr) => {
   toys.insertAdjacentHTML('beforeend', toyTemplates);
 };
 
+// render cart items
+const renderCart = (toyObjects) => {
+  toys.innerHTML = '';
+  toys.insertAdjacentHTML('beforeend', getCartTemplates(toyObjects));
+};
+
+const getCartTemplates = (toyObjects) => {
+  return toyObjects.reduce((accumulator, toy) => accumulator.concat(
+    `<div class="card " style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+          <img src="${toy.images[0]}" class="card-img pt-2 pl-2" alt="${toy.title}">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body mp-0">
+            <dl class="row mt-4 mb-0">
+              <dt class="col-sm-5">Price:</dt>
+              <dd class="col-sm-7">${toy.price}</dd>
+              <dt class="col-sm-5">Ages:</dt>
+              <dd class="col-sm-7">${toy.ageTag}</dd>
+              <dt class="col-sm-5">Gender:</dt>
+              <dd class="col-sm-7">${toy.genderTag}</dd>
+              <dt class="col-sm-5">Posted:</dt>
+              <dd class="col-sm-7">${(new Date(toy.createdAt)).toDateString()}</dd>
+              <dt class="col-sm-6 mt-5"><button type="button" class="btn btn-block btn-outline-secondary contactButton" id="${toy._id}">Contact</button></dt>
+              <dd class="col-sm-6 mt-5"><button type="button" class="btn btn-block btn-outline-secondary unwatchButton" id="${toy._id}">Unwatch</button></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="row no-gutters card-body">
+            <h5 class="card-title">${toy.title}</h5>
+            <p class="card-text">${toy.description}</p>
+      </div>
+    </div>`
+  ), '');
+};
+
 // get concatenated toy templates for each profile
 function getToyTemplates(profile) {
   return profile.toys.reduce((accumulator, toy) => accumulator.concat(
@@ -243,31 +353,6 @@ function getToyTemplates(profile) {
 
 
 
-// add item to user cart
-document.getElementById('toys').addEventListener('click', (event) => {
-  if (event.target.classList.contains('add')) {
-    if (checkLoginStatus()) {
-
-      fetch(`${API_BASE}/profile/${profileID}/favs`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({toyId: event.target.id}),
-      })
-        .then((stream) => stream.json())
-        .then((res) => {
-          if (res.status === 201) {
-            event.target.innerText = "Added";
-          }
-        })
-        .catch((err) => console.log(err));
-
-    } else {
-      $('#loginModal').modal('show');
-    }
-  }
-});
 
 
 

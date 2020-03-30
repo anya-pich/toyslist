@@ -20,7 +20,7 @@ const index = (req, res) => {
                     .status(400)
                     .json({status: 400, error: 'Something went wrong, please try again.'});
             }
-            res.send(profile[0]._id);
+            res.send(profile[0]);
         });
     } else {
         db.Profile.find({}, (err, allProfiles) => {

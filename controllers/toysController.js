@@ -13,15 +13,37 @@ const index = (req, res) => {
 }; // works
 
 // get all toys
+// search toys at url/api/v1/toys?q=value
+
 const index2 = (req, res) => {
-    db.Toy.find({}, (err, allTheToys) => {
-        if (err) {
-            return res
-                .status(400)
-                .json({status: 400, error: 'Something went wrong, please try again.'});
-        }
-        res.json(allTheToys);
-    });
+
+    if (req.query.q) {
+       
+        db.Toy.find( {
+            $match: {
+                $or: [
+                    { title: { $regex: req.query.q, '$options': 'i'}},
+                    { description: {$regex: req.query.q, '$options': 'i'}}
+                ]
+            }
+        }, (err, foundObjects) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            res.json(foundObjects);
+        });
+    } else {
+        db.Toy.find({}, (err, allTheToys) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({status: 400, error: 'Something went wrong, please try again.'});
+            }
+            res.json(allTheToys);
+        });
+    }
 };
 
 // create new toy listing at url/api/v1/profile/profile_id/toys

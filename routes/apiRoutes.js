@@ -28,6 +28,7 @@ router.delete('/profile/:id', ctrl.profilesCtrl.remove);
 router.get('/profile/:profile_id/toys', ctrl.toysCtrl.index);
 
 // get all toys at url/api/v1/toys
+// search toys at url/api/v1/toys?q=value
 router.get('/toys', ctrl.toysCtrl.index2);
 
 // create new toy listing at url/api/v1/profile/profile_id/toys
@@ -44,6 +45,9 @@ router.put('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.update);
 
 // delete specific toy at url/api/v1/profile/profile_id/toy/toy_id
 router.delete('/profile/:profile_id/toy/:toy_id', ctrl.toysCtrl.remove);
+
+// search toys at url/api/v1/toys?q=value
+
 
 // CART
 
