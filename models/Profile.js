@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Toy = require('./Toy');
+const Schema = mongoose.Schema;
 
 //Profile Schema//
 const ProfileSchema = new mongoose.Schema({
@@ -14,7 +15,7 @@ const ProfileSchema = new mongoose.Schema({
     pic: String,
     toys: [Toy.schema],
     cart: [{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Toy'
     }]
 });

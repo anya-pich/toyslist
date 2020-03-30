@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.set('debug', true);
 
 const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/toyslist';
 

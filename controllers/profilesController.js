@@ -43,7 +43,7 @@ const create = (req, res) => {
                 .status(400)
                 .json({status: 400, error: 'Something went wrong, please try again.'});
         }
-        res.status(201).json(newProfile);
+        res.status(201).json(newProfile._id);
     });
 }; // works
 

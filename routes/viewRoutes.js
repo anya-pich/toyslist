@@ -1,16 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
+// arrive at website.com 
+// check for cookies
+
+// if no cookies you see all the listings, sign up, login, zipcode & search options
+
+// if cookies, at the same route your profile id will be displayed as a query
+
+
+// homepage
 router.get('/', (req, res) => {
     res.sendFile('/public/views/index.html', {
         root: __dirname + '/../',
     });
 });
 
+// set cookie
 router.post('/cookie', (req, res) => {
     res.cookie('zipcode', req.body.zipcode);
     res.redirect('/');
-}); // install cookie
+});
 
 router.get('/login', (req, res) => {
 

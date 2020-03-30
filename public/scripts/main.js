@@ -1,44 +1,214 @@
 
 const API_BASE = '/api/v1';
+// const nav = require('./navbar.js');
 const toys = document.getElementById('toys');
+let zipcode = localStorage.getItem('zipcode');
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-// functions
 
-// get zipcode cookie
-function getCookie(cooKey) {
-  const name = cooKey + "=";
-  const ca = document.cookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
+
+
+
+
+
+
+// zipcode
+
+const zipRender = (value) => {
+  console.log('rendering zip');
+  document.getElementById('zipcodeForm').innerHTML = 
+  `<button class="btn btn-outline-secondary btn-rounded btn-md mr-lg-5" type="submit" id="zipX">${value}  x</button>`;
+}
+
+const zipUnset = () => {
+  document.getElementById('zipcodeForm').innerHTML = 
+    `<input class="form-control mr-sm-2" type="text" placeholder="Enter Zipcode here" value="" name="zipcode" id="zipInput">
+    <button class="btn btn-outline-primary btn-rounded btn-md mr-lg-5" type="submit" id="zipButton">Enter</button>`
+  localStorage.removeItem('zipcode');
+}
+
+// load toy cards
+
+const toysAll = () => {
+  console.log('rendering all');
+  fetch(`${API_BASE}/profiles`)
+    .then((stream) => stream.json())
+    .then(res => render(res))
+    .catch((err) => console.log(err));
+}
+
+const toysByZipcode = (value) => {
+  console.log('rendering by zip');
+  fetch(`${API_BASE}/profiles?zipcode=${value}`)
+    .then((stream) => stream.json())
+    .then(res => render(res))
+    .catch((err) => console.log(err));
+}
+
+const toysBySearch = (value) => {
+  fetch(`${API_BASE}/toys?q=${value}`) // set this up
+    .then((stream) => stream.json())
+    .then(res => render(res))
+    .catch((err) => console.log(err));
+}
+
+// load page
+
+if (zipcode) {
+  console.log('loading cards by zip');
+  zipRender(zipcode);
+  toysByZipcode(zipcode);
+} else {
+  $('#zipcodeModal').modal('show');
+  console.log('loading all cards');
+  toysAll();
+}
+
+
+// on load
+
+document.addEventListener('DOMContentLoaded', function(){
+  
+  // navbar controls
+
+  let navbar = document.getElementById('navbar');
+  navbar.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(event.target.id);
+
+    switch (event.target.id){
+
+      case 'zipButton':
+        let newZip = document.getElementById('zipInput').value;
+        console.log(newZip);
+        toysByZipcode(newZip);
+        zipRender(newZip);
+        localStorage.setItem('zipcode', newZip);
+        break;
+
+      case 'zipX':
+        zipUnset();
+        toysAll();
+        break;
+
+      case 'searchButton':
+        let searchTerm = document.getElementById('searchInput').value;
+        toysBySearch(searchTerm);
+        break;
+
+      case 'loginNav':
+        $('#loginModal').modal('show');
+        break;
+
+      case 'signupNav':
+        $('#signUpModal').modal('show');
+        break;
+
+      case 'profileButton':
+        profileGo();
+        break;
+
+      case 'logOut':
+        localStorage.removeItem('profile');
+        break;
+
+      case 'cartButton':
+
+        break;
+
+      case 'ageSelector':
+        
+        break;
+      
+      case 'genderSelector':
+        
+        break;
     }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-};
+  })
 
-// change zipcode form when there is a zipcode cookie
-const setZip = (zipcode) => {
-  document.getElementById('zipInput').setAttribute('placeholder', zipcode);
-  document.getElementById('zipButton').innerText = 'Clear';
-};
+  // modal listeners
 
-// const deleteCookie = (name) => {
-//   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-// }
+  document.getElementById('switchToSignUp').addEventListener('click', (event) => {
+    $('#loginModal').modal('hide');
+    $('#signUpModal').modal('show');
+  })
+
+  document.getElementById('switchToLogin').addEventListener('click', (event) => {
+    $('#loginModal').modal('show');
+    $('#signUpModal').modal('hide');
+  })
+
+  // zip modal
+
+  document.getElementById('zipForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    let input = document.getElementById('zipcodeInput').value;
+    zipRender(input);
+    toysByZipcode(input);
+    $('#zipcodeModal').modal('hide');
+  })
+
+  // log in
+  document.getElementById('loginForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = document.getElementById('emailInputL').value.split('@').join('%40');
+    fetch(`${API_BASE}/profiles?email=${email}`, {
+      method: 'GET'
+    })
+      .then((stream) => stream.json())
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem('profile', res);
+        window.location = `/profile/${res}`;
+      })
+      .catch((err) => console.log(err));
+  })
+
+  // sign up
+  document.getElementById('signupForm').addEventListener('submit', (event) => {
+    
+    event.preventDefault();
+    const name = document.getElementById('nameInput').value;
+    const email = document.getElementById('emailInputS').value;
+    const phone = document.getElementById('phoneInput').value;
+    const zipcode = document.getElementById('zipcodeInput').value;
+
+    const userData = {
+      name,
+      email,
+      phone,
+      zipcode,
+    };
+
+    fetch(`${API_BASE}/profiles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((stream) => stream.json())
+      .then((res) => {
+        localStorage.setItem('profile', res);
+        window.location = `/profile/${res}`;
+      })
+      .catch((err) => console.log(err));
+
+  });
+});
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Body
 
 // render toys to html
-function render(profilesArr) {
-  // console.log(profilesArr);
+const render = (profilesArr) => {
   toys.innerHTML = '';
-
   const toyTemplates = profilesArr.map((profile) => getToyTemplates(profile)).join('');
-  // console.log(toyTemplates);
   toys.insertAdjacentHTML('beforeend', toyTemplates);
 };
 
@@ -53,108 +223,52 @@ function getToyTemplates(profile) {
         <p class="card-text text-truncate">${toy.description}</p>
         <h6 class="card-subtitle text-muted">${toy.price}</h6>
       </div>
-      <div>
-        <a href="profile/${profile._id}/toy/${toy._id}" class="btn btn-primary mr-4 mb-3 float-right">View</a>
-      </div>
-      <div class="card-footer text-center">
-        <small class="text-muted">Posted by ${profile.name}</small>
+      <div class="card-footer p-2 container">
+        <div class="row">
+          <div class="col-sm-6 pr-1">
+            <a href="profile/${profile._id}/toy/${toy._id}" class="btn w-100 btn-sm btn-outline-primary btn-block">View</a>
+          </div>
+          <div class="col-sm-6 pl-1">
+            <button type="button" class="btn w-100 btn-sm btn-outline-primary add" id="${toy._id}">Add</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>`
   ), '');
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////
 
-// open zipcode modal on load if no zipcode cookie
-// populate cards by zip if there is a cookie
-// or else all cards
-$(window).on('load',function(){
-  const zipcode = getCookie('zipcode');
-  if (zipcode) {
-    setZip(zipcode);
-    fetch(`${API_BASE}/profiles?zipcode=${zipcode}`)
-      .then((stream) => stream.json())
-      .then(res => render(res))
-      .catch((err) => console.log(err));
-  } else {
-    $('#zipcodeModal').modal('show');
-    fetch(`${API_BASE}/profiles`)
-      .then((stream) => stream.json())
-      .then(res => render(res))
-      .catch((err) => console.log(err));
+
+
+
+
+// add item to user cart
+document.getElementById('toys').addEventListener('click', (event) => {
+  if (event.target.classList.contains('add')) {
+    if (checkLoginStatus()) {
+
+      fetch(`${API_BASE}/profile/${profileID}/favs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({toyId: event.target.id}),
+      })
+        .then((stream) => stream.json())
+        .then((res) => {
+          if (res.status === 201) {
+            event.target.innerText = "Added";
+          }
+        })
+        .catch((err) => console.log(err));
+
+    } else {
+      $('#loginModal').modal('show');
+    }
   }
 });
 
-// log in and go to main page
-const loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = document.getElementById('emailInputL').value.split('@').join('%40');
-  console.log(email);
-  fetch(`/api/v1/profiles?email=${email}`, {
-    method: 'GET'
-  })
-    .then((stream) => stream.json())
-    .then((res) => {
-      console.log(res);
-      window.location = `/main/${res}`;
-    })
-    .catch((err) => console.log(err));
-})
-
-// sign up and go to profile
-
-// sign up and go to ???
-
-const signupForm = document.getElementById('signupForm');
-
-signupForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const name = document.getElementById('nameInput').value;
-  const email = document.getElementById('emailInputS').value;
-  const phone = document.getElementById('phoneInput').value;
-  const zipcode = document.getElementById('zipcodeInput').value;
-
-  const userDataS = {
-    name,
-    email,
-    phone,
-    zipcode,
-  };
-
-  fetch(`/api/v1/profiles?email=${email}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userData),
-  })
-    .then((stream) => stream.json())
-    .then((res) => {
-      if (res.status === 201) {
-        window.location = '/login';
-      } else {
-      window.location = `/profile/${res}`;      }
-    })
-    .catch((err) => console.log(err));
-})
-
-$(document).on("click","#switchToLogin",function(){
-  $('#signUpModal').modal('hide');
-  $('#loginModal').modal('show');
-});
-
-
-$(document).on("click","#switchToSignUp",function(){
-  $('#loginModal').modal('hide');
-  $('#signUpModal').modal('show');
-});
-
-$(document).on("click","#switchToLogin",function(){
-  $('#signUpModal').modal('hide');
-  $('#loginModal').modal('show');
-});
 
 
 
@@ -168,148 +282,6 @@ $(document).on("click","#switchToLogin",function(){
 
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-// fetch(`/profile/${id}`)df
-
-// // go to profile
-// // router.get('/profiles', (req, res) => {
-
-//   // get button
-//   // prevent default
-//   // get the email and send it to the api to get id number
-//   // then go to link
-//   const email = (req.query.email).split('@').join('%40');
-//   let profileId = '';
-//   fetch(`/api/v1/profiles?email=${email}`)
-//       .then(console.log('something is happening'))
-//       .then((stream) => stream.json())
-//       .then(profileId = res)
-//       .catch((err) => console.log(err));
-//   // res.redirect(`/profile/${profileId}`);
-//   res.send(profileId);
-//   // res.sendFile('/public/views/profile/profile.html', {
-//   //     root: __dirname + '/../',
-//   // });
-//   // res.send(req.query.email);
-// });
-
-
-
-
-
-
-
-
-
-
-// function render(toysArray) {
-//   const toyTemplates = toysArray.map((toy) => getToyTemplate(toy)).join('');
-//   toys.insertAdjacentHTML('beforeend', toyTemplates);
-// }
-
-// function getToyTemplate(json) {
-// // for(let i in user.toys) {
-// // 	console.log(i);
-// let toysAll = [];
-// console.log(json.toys);
-// for (let i=0;i<json.length;i++){
-// toysAll.push(json[i].toys);
-// console.log(toysAll);};
-// // for(let i=0; i<toysAll.length; i++) {
-//   return `
-//     <div class="col-md-4 mb-4">
-//       <div id="${json.toys[0]._id}" class="card">
-//         <img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
-//         <div class="card-body">
-//           <h5>${json.toys[0].title}</h5>
-//           <p class="card-text">${json.toys[0].description}</p>
-//           <a href="/toys/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
-//         </div>
-//       </div>
-//     </div>
-//   `;
-// };
-// }
-
-
-
-//////////////////////////////////////////////
-// $('form-inline').on('submit',function(e){
-// 	e.preventDefault();
-// 	$.ajax ({
-// 		method: 'GET',
-// 		url:'http://api/v1/profile'
-// 		success: onSuccess,
-// 		error: onError,
-// 	});
-
-// 	function onSuccess (json) {
-// 	$users.empty();
-// 		for (let i=0; i<json.fakePeople.length; i++) {
-// 			$users.append('json.fakePeople.name');
-// 	};
-// function onError () {
-// 	console.log('err');
-// 	};
-// };
-// });
-
-
-// const $toysList = $('#toys');
-// const allToys = [];
-
-// $.ajax ({
-// 	method: 'GET',
-// 	url:'/api/v1/profiles',
-// 	success: onSuccess,
-// 	error: onError,
-// 	});
-
-// 	function getToyHtml(json) {
-// 		console.log("get a toy");
-// 		return `
-// 		    <div class="col-md-4 mb-4">
-// 	      		<div id="${json.toys[0]._id}" class="card">
-// 	        		<img src="${json.toys[0].images}" class="card-img-top" alt="${json.toys[0].title}" />
-// 	        		<div class="card-body">
-// 	          			<h5>${json.toys[0].title}</h5>
-// 	          			<p class="card-text">${json.toys[0].description}</p>
-// 	          			<a href="/profiles/${json.toys[0]._id}" class="btn btn-primary float-right">View</a>
-// 	        		</div>
-// 	      		</div>
-// 	    	</div>
-// 	  	`;
-// 	};
-
-// 	function getAllToysHtml(toys) {
-// 		return toys.map(getToyHtml).join('');
-// 	};
-
-// 	function render () {
-// 		$toysList.empty();
-// 		let toysHtml = getAllToysHtml(allToys);
-// 		$toysList.append(toysHtml);
-// 	};
-
-// 	function onSuccess (json) {
-// 		console.log("ok");
-// 		allToys = json;
-// 		render();
-// 	};
-
-
-// 	function onError(json) {
-// 		console.log("Error");
-// 	};
 
 
 
