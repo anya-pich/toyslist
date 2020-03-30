@@ -3,6 +3,15 @@ const profileId = window.location.pathname.split('/')[2];
 const postForm = document.getElementById('newPost');
 // console.log('toy ID = ', toyId);
 
+// Add favorite button
+$('.favorite').append(
+`<a href="/main/${profileId}/favorite">
+  <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+  </svg>
+</a>`
+);
+
 // Listen/Handle New Post Submit
 postForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -38,7 +47,7 @@ postForm.addEventListener('submit', (event) => {
         .then((res) => {
             console.log(res);
             
-            window.location = `/profile/${profileId}`;
+            window.location = `/main/${profileId}/profile/${profileId}`;
             
           })
         .catch((err) => console.log(err));

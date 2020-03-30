@@ -1,7 +1,7 @@
 
 const API_BASE = '/api/v1';
 const toy = document.getElementById('toy');
-const [,,profileId,,toyId] = window.location.pathname.split('/');
+const [,,hostId,,profileId,,toyId] = window.location.pathname.split('/');
 
 // GET toy
 function getToy() {
@@ -13,8 +13,17 @@ function getToy() {
 
 getToy();
 
-// $('.profile').append(`<a href="/profile" class="btn btn-outline-primary">my profile</a>`);
-$('.profile').append(`<a href="../../../profile/${profileId}" class="btn btn-outline-primary btn-rounded btn-md mr-lg-5">my profile</a>`);
+// Add my profile button
+$('.profile').append(`<a href="../../../profile/${hostId}" class="btn btn-outline-primary btn-rounded btn-md mr-lg-5">my profile</a>`);
+
+// Add favorite button
+$('.favorite').append(
+`<a href="/main/${hostId}/favorite">
+  <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+  </svg>
+</a>`
+);
 
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
@@ -94,7 +103,7 @@ homebtn.addEventListener('click', (event) => {
     .then((stream) => stream.json())
     .then((res) => {
       console.log(res);
-      window.location = `/main/${profileId}`;
+      window.location = `/main/${hostId}`;
     })
     .catch((err) => console.log(err));
 })
