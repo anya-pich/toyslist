@@ -1,17 +1,8 @@
 
 const API_BASE = '/api/v1';
 const toy = document.getElementById('toy');
+const contact = document.getElementById('contact');
 const [,,hostId,,profileId,,toyId] = window.location.pathname.split('/');
-
-// GET toy
-function getToy() {
-  fetch(`${API_BASE}/profile/${profileId}/toy/${toyId}`)
-    .then((stream) => stream.json())
-    .then(res => render(res))
-    .catch((err) => console.log(err));
-}
-
-getToy();
 
 // Add my profile button
 $('.profile').append(`<a href="../../../profile/${hostId}" class="btn btn-outline-primary btn-rounded btn-md mr-lg-5">my profile</a>`);
@@ -25,11 +16,31 @@ $('.favorite').append(
 </a>`
 );
 
+// GET toy
+function getToy() {
+  fetch(`${API_BASE}/profile/${profileId}/toy/${toyId}`)
+    .then((stream) => stream.json())
+    .then(res => render(res))
+    .catch((err) => console.log(err));
+}
+
+getToy();
+
 function render(toyObj) {
   const toyTemplate = getToyTemplate(toyObj);
   toy.innerHTML = '';
   toy.insertAdjacentHTML('beforeend', toyTemplate);
-}
+
+  $('#contactbtn').on('click',
+  function getProfile() {
+    fetch(`${API_BASE}/profile/${profileId}`)
+      .then((stream) => stream.json())
+      .then(res => render2(res))
+      .catch((err) => console.log(err));
+    }
+  );
+  getProfile(profileId);
+};
 
 function getToyTemplate(toy) {
   const date = new Date(toy.createdAt);
@@ -48,12 +59,38 @@ function getToyTemplate(toy) {
         <dt class="col-sm-3">Posted:</dt>
         <dd class="col-sm-9">${date.toDateString()}</dd>
       </dl>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="contactbtn">
       Contact the seller
       </button>
       <button class="btn btn-secondary" type="submit">Add to My Favorite</button>
     </div>
+  `;
+};
+// console.log(toy);
 
+// GET profile
+// $('#contactbtn').on('click',
+// function getProfile(profileId) {
+//   fetch(`${API_BASE}/profile/${profileId}`)
+//     .then((stream) => stream.json())
+//     .then(res => render2(res))
+//     .catch((err) => console.log(err));
+// }
+// );
+
+// // getProfile(profileId);
+// console.log(toy);
+
+function render2(profileObj) {
+  const profileTemplate = getProfileTemplate(profileObj);
+  contact.innerHTML = '';
+  console.log("in profile");
+  contact.insertAdjacentHTML('beforeend',profileTemplate);
+}
+
+function getProfileTemplate(profile) {
+  console.log(profile.name);
+  return `
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -66,13 +103,13 @@ function getToyTemplate(toy) {
       <div class="modal-body">
         <dl class="row">
         <dt class="col-sm-3">Name:</dt>
-        <dd class="col-sm-9">${toy.title}</dd>
+        <dd class="col-sm-9">${profile.name}</dd>
         <dt class="col-sm-3">Email:</dt>
-        <dd class="col-sm-9">${toy.ageTag}</dd>
+        <dd class="col-sm-9">${profile.email}</dd>
         <dt class="col-sm-3">Phone:</dt>
-        <dd class="col-sm-9">${toy.genderTag}</dd>
+        <dd class="col-sm-9">${profile.phone}</dd>
         <dt class="col-sm-3">Zipcode:</dt>
-        <dd class="col-sm-9">${date.toDateString()}</dd>
+        <dd class="col-sm-9">${profile.zipcode}</dd>
       </dl>
       </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -80,16 +117,7 @@ function getToyTemplate(toy) {
   </div>
 </div>
   `;
-}
-
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+};
 
 
 //home button
